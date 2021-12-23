@@ -8,12 +8,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{{ task.status }}</h1>
-    <h2>{{ task.description }}</h2>
-    <p>{{ task.created_at }}</p>
-    <p>{{ task.to_do_at }}</p>
-
-
+<h1>Список задач!</h1>
+    {% for task in tasks %}
+        <hr>
+        <h2>Статус: {{ task.get_status_display }}</h2>
+        <h2>Описание: {{ task.description }}</h2>
+        <p>Дата создания: {{ task.created_at }}</p>
+        <p>Дата завершения: {{ task.to_do_at }}</p>
+        <hr>
+    {% endfor %}
     <p><a href="/">На главную...</a></p>
 </body>
 </html>

@@ -14,7 +14,7 @@
     {% csrf_token %}
 
     <label>Status:</label><br/>
-    <select>
+    <select name="status">
         {% for choice in status %}
             <option value="{{ choice.0 }}">{{ choice.1 }}</option>
         {% endfor %}

@@ -16,13 +16,11 @@ def add_task_view(request):
         description = request.POST.get('description')
         to_do_at = request.POST.get('to_do_at')
         new_task = Task.objects.create(status=status, description=description, to_do_at=to_do_at)
-        context = {"task": new_task}
 
-        return render(request, 'tasks_view.html', context)
+        return render(request, 'tasks_add.html', {"tasks": new_task})
 
 
 def view_tasks_view(request):
-    pk = request.GET.get("pk")
-    task = Task.objects.get(pk=pk)
-    context = {"task": task}
-    return render(request, 'tasks_view.html', context)
+    task = Task.objects.order_by("created_at")
+    return render(request, 'tasks_view.html', {'tasks': task})
+
