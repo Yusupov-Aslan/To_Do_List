@@ -8,7 +8,12 @@
     <title>Document</title>
 </head>
 <body>
-<h1><a href="new_task/">ADD TASK</a></h1>
-<h2><a href="view_tasks/">VIEW TASKS</a></h2>
+    <h1>{{ task.status }}</h1>
+    <h2>{{ task.description }}</h2>
+    <p>{{ task.created_at }}</p>
+    <p>{{ task.to_do_at }}</p>
+
+
+    <p><a href="/">На главную...</a></p>
 </body>
 </html>
