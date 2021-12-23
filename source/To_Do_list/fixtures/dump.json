@@ -1,0 +1,12 @@
+[
+{
+    "model": "To_Do_list.task",
+    "pk": 30,
+    "fields": {
+        "description": "Работа по улучшению навыков",
+        "status": "new",
+        "created_at": "2021-12-23",
+        "to_do_at": "2021-12-23"
+    }
+}
+]
