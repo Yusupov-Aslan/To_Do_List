@@ -13,11 +13,9 @@
         <hr>
         <h2>Статус: {{ task.get_status_display }}</h2>
         <h2>Описание: {{ task.description }}</h2>
-        <p> Подробное описание:{{ task.detailed_description }}</p>
-        <p>Дата создания: {{ task.created_at }}</p>
-        <p>Дата завершения: {{ task.to_do_at }}</p>
+        <p><a href="/task/{{ task.pk }}/">Детальный просмотр...</a></p>
         <hr>
     {% endfor %}
-    <p><a href="/">На главную...</a></p>
+    <p><a href="/">На главную</a></p>
 </body>
 </html>
