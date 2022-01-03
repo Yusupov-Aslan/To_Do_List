@@ -16,6 +16,6 @@
         <p><a href="/task/{{ task.pk }}/">Детальный просмотр...</a></p>
         <hr>
     {% endfor %}
-    <p><a href="/">На главную</a></p>
+    <p><a href="{% url "index" %}">На главную</a></p>
 </body>
 </html>

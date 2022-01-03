@@ -13,6 +13,6 @@
     <p> Подробное описание:{{ task.detailed_description }}</p>
     <p>Дата создания: {{ task.created_at }}</p>
     <p>Дата завершения: {{ task.to_do_at }}</p>
-    <p><a href="/view_tasks/">Назад</a></p>
+    <p><a href="{% url "view_tasks_view" %}">Назад</a></p>
 </body>
 </html>
