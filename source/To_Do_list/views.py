@@ -14,8 +14,10 @@ def add_task_view(request):
     else:
         status = request.POST.get('status')
         description = request.POST.get('description')
+        detailed_description = request.Post.get('detailed_description')
         to_do_at = request.POST.get('to_do_at')
-        new_task = Task.objects.create(status=status, description=description, to_do_at=to_do_at)
+        new_task = Task.objects.create(status=status, description=description,
+                                       detailed_description=detailed_description, to_do_at=to_do_at)
 
         return render(request, 'tasks_add.html', {"tasks": new_task})
 
