@@ -1,18 +1,21 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}{{ task.description }}{% endblock %}
+{% block nav %}
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="{% url 'add_task_view' %}">Новая задача</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Редактировать</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Удалить</a>
+    </li>
+{% endblock %}
+{% block content %}
     <h2>Статус: {{ task.get_status_display }}</h2>
     <h2>Описание: {{ task.description }}</h2>
     <p> Подробное описание:{{ task.detailed_description }}</p>
     <p>Дата создания: {{ task.created_at }}</p>
     <p>Дата завершения: {{ task.to_do_at }}</p>
     <p><a href="{% url "view_tasks_view" %}">Назад</a></p>
-</body>
-</html>
+{% endblock %}

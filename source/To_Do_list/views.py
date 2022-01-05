@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from To_Do_list.models import Task, STATUS_CHOICES
 from django.http import Http404
 
+
 def index_view(request):
     return render(request, 'index.html')
 

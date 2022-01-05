@@ -1,14 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<h1><a href="{% url "add_task_view" %}">ADD TASK</a></h1>
-<h2><a href="{% url "view_tasks_view" %}">VIEW TASKS</a></h2>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Main{% endblock %}
+{% block content %}
+    <h1><a href="{% url "add_task_view" %}">Создание Задачи!!!</a></h1>
+    <h2><a href="{% url "view_tasks_view" %}">Просмотр всех Задач!!!</a></h2>
+{% endblock %}
