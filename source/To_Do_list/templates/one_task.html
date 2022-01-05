@@ -5,7 +5,7 @@
       <a class="nav-link active" aria-current="page" href="{% url 'add_task_view' %}">Новая задача</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">Редактировать</a>
+      <a class="nav-link active" aria-current="page" href="{% url 'task_update_view' task.pk%}">Редактировать</a>
     </li>
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">Удалить</a>

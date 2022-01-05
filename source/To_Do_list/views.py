@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from To_Do_list.models import Task, STATUS_CHOICES
-from django.http import Http404
 
 
 def index_view(request):
@@ -34,10 +33,23 @@ def view_tasks_view(request):
 
 
 def one_task_view(request, pk):
-    try:
-        task = Task.objects.get(pk=pk)
-        context = {"task": task}
-    except Task.DoesNotExist:
-        raise Http404
-
+    # try:
+    #     task = Task.objects.get(pk=pk)
+    # except Task.DoesNotExist:
+    #     raise Http404
+    task = get_object_or_404(Task, pk=pk)
+    context = {"task": task}
     return render(request, 'one_task.html', context)
+
+
+def task_update_view(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'GET':
+        return render(request, 'task_update.html', {"task": task, "status": STATUS_CHOICES})
+    else:
+        task.status = request.POST.get('status')
+        task.description = request.POST.get('description')
+        task.detailed_description = request.POST.get('detailed_description')
+        task.to_do_at = request.POST.get('to_do_at')
+        task.save()
+        return redirect("one_task_view", pk=task.pk)
