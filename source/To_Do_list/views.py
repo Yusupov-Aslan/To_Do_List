@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from To_Do_list.forms import TaskForm
 from To_Do_list.models import Task, STATUS_CHOICES
 
 
@@ -8,21 +9,20 @@ def index_view(request):
 
 def add_task_view(request, **kwargs):
     if request.method == 'GET':
-        return render(request, 'task_create.html', {"status": STATUS_CHOICES})
+        form = TaskForm()
+        return render(request, 'task_create.html', {"status": STATUS_CHOICES, "form": form})
     else:
+        form = TaskForm(data=request.POST)
         status = request.POST.get('status')
-        description = request.POST.get('description')
-        detailed_description = request.POST.get('detailed_description')
-        to_do_at = request.POST.get('to_do_at')
-        new_task = Task.objects.create(status=status, description=description,
-                                       detailed_description=detailed_description, to_do_at=to_do_at)
-        # context = {"tasks": new_task}
-        # url = reverse("one_task_view", kwargs={"pk": new_task.pk})
-        # return HttpResponseRedirect(url)
-
-        return redirect("one_task_view", pk=new_task.pk)
-
-        # return render(request, 'tasks_add.html', context)
+        if form.is_valid():
+            description = form.cleaned_data.get('description')
+            detailed_description = form.cleaned_data.get('detailed_description')
+            to_do_at = form.cleaned_data.get('to_do_at')
+            new_task = Task.objects.create(status=status, description=description,
+                                           detailed_description=detailed_description, to_do_at=to_do_at)
+            return redirect("one_task_view", pk=new_task.pk)
+        else:
+            return render(request, 'task_create.html', {"status": STATUS_CHOICES, "form": form})
 
 
 def view_tasks_view(request):
