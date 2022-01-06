@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Удаление задачи{% endblock %}
+{% block nav %} {% endblock %}
+{% block content %}
+    <div>
+        <form action="{% url 'task_delete_view' task.pk %}" method="POST">
+        {% csrf_token %}
+        <h2>Вы действительно хотите удалить задачу {{ task.description }}</h2>
+        <input type="submit" value="Да">
+        </form>
+        <a href="{% url 'one_task_view' task.pk %}">Нет</a>
+    </div>
+{% endblock %}

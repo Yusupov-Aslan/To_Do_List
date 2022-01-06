@@ -53,3 +53,12 @@ def task_update_view(request, pk):
         task.to_do_at = request.POST.get('to_do_at')
         task.save()
         return redirect("one_task_view", pk=task.pk)
+
+
+def task_delete_view(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'GET':
+        return render(request, 'task_delete.html', {"task": task})
+    else:
+        task.delete()
+        return redirect('view_tasks_view')
