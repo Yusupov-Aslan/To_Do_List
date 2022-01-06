@@ -45,14 +45,19 @@ def one_task_view(request, pk):
 def task_update_view(request, pk):
     task = get_object_or_404(Task, pk=pk)
     if request.method == 'GET':
-        return render(request, 'task_update.html', {"task": task, "status": STATUS_CHOICES})
+        form = TaskForm(data=request.POST)
+        return render(request, 'task_update.html', {"task": task, "form": form, "status": STATUS_CHOICES})
     else:
+        form = TaskForm(data=request.POST)
         task.status = request.POST.get('status')
-        task.description = request.POST.get('description')
-        task.detailed_description = request.POST.get('detailed_description')
-        task.to_do_at = request.POST.get('to_do_at')
-        task.save()
-        return redirect("one_task_view", pk=task.pk)
+        if form.is_valid():
+            task.description = form.cleaned_data.get('description')
+            task.detailed_description = form.cleaned_data.get('detailed_description')
+            task.to_do_at = form.cleaned_data.get('to_do_at')
+            task.save()
+            return redirect("one_task_view", pk=task.pk)
+        else:
+            return render(request, 'task_update.html', {"task": task, "form": form, "status": STATUS_CHOICES})
 
 
 def task_delete_view(request, pk):
