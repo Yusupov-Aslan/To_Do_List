@@ -1,0 +1,19 @@
+{% csrf_token %}
+
+<label>Status:</label><br/>
+<select name="status">
+    {% for choice in status %}
+        <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+    {% endfor %}
+</select><br/>
+
+<label>Description:</label><br/>
+<textarea name="description">{{ task.description }}</textarea><br/>
+
+<label>Detailed description:</label><br/>
+<textarea name="detailed_description">{{ task.detailed_description }}</textarea><br/>
+
+<label>Time to Do:</label><br/>
+<input name="to_do_at" value="{{ task.to_do_at }}"/><br/>
+<br/>
+<input type="submit" value={{ button_text }} />
