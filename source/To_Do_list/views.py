@@ -45,7 +45,11 @@ def one_task_view(request, pk):
 def task_update_view(request, pk):
     task = get_object_or_404(Task, pk=pk)
     if request.method == 'GET':
-        form = TaskForm(data=request.POST)
+        form = TaskForm(initial={
+            'detailed_description': task.detailed_description,
+            'description': task.description,
+            'to_do_at': task.to_do_at
+        })
         return render(request, 'task_update.html', {"task": task, "form": form, "status": STATUS_CHOICES})
     else:
         form = TaskForm(data=request.POST)
