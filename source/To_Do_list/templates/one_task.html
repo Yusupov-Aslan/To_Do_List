@@ -12,10 +12,9 @@
     </li>
 {% endblock %}
 {% block content %}
-    <h2>Статус: {{ task.get_status_display }}</h2>
-    <h2>Описание: {{ task.description }}</h2>
-    <p> Подробное описание:{{ task.detailed_description }}</p>
-    <p>Дата создания: {{ task.created_at }}</p>
-    <p>Дата завершения: {{ task.to_do_at }}</p>
+    <h2>Статус: {{ task.status }}</h2>
+    <h2>Тип: {{ task.type }}</h2>
+    <p> Заголовок:{{ task.summary }}</p>
+    <p> Подробное описание:{{ task.description }}</p>
     <p><a href="{% url "view_tasks_view" %}">Назад</a></p>
 {% endblock %}

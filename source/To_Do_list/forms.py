@@ -8,7 +8,7 @@ class TaskForm(forms.Form):
     type = forms.ModelChoiceField(queryset=Type.objects.all())
     status = forms.ModelChoiceField(queryset=Status.objects.all())
     summary = forms.CharField(max_length=20, required=True, label="Краткое описание")
-    description = forms.CharField(max_length=2000, required=True, label="Полное описание",
+    description = forms.CharField(max_length=2000, required=False, label="Полное описание",
                                   widget=widgets.Textarea(attrs={"rows": 1, "cols": 40}))
 
 
