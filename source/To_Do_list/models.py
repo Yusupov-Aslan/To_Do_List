@@ -4,12 +4,13 @@ from django.db import models
 
 
 class Task(models.Model):
-    summary = models.CharField(max_length=20, null=True, blank=True, verbose_name="Краткое описание")
-    description = models.TextField(max_length=2000, verbose_name="Описание")
-    status = models.ForeignKey('To_Do_list.Status', on_delete=models.PROTECT, related_name='Status', verbose_name='Статус')
+    summary = models.CharField(max_length=20, verbose_name="Краткое описание")
+    description = models.TextField(max_length=2000, null=True, blank=True, verbose_name="Полное описание")
+    status = models.ForeignKey('To_Do_list.Status', on_delete=models.PROTECT,
+                               related_name='Status', verbose_name='Статус')
     type = models.ForeignKey('To_Do_list.Type', on_delete=models.PROTECT, related_name='Type', verbose_name='Тип')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
-    update = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
+    update = models.DateTimeField(auto_now=True, verbose_name="Время обновления")
 
     def __str__(self):
         return f"{self.pk}. {self.summary}: {self.status} - {self.type}"
@@ -21,7 +22,7 @@ class Task(models.Model):
 
 
 class Type(models.Model):
-    type = models.CharField(max_length=10)
+    type = models.CharField(max_length=20)
 
     def __str__(self):
         return f'{self.type}'
@@ -33,7 +34,7 @@ class Type(models.Model):
 
 
 class Status(models.Model):
-    status = models.CharField(max_length=10)
+    status = models.CharField(max_length=20)
 
     def __str__(self):
         return f'{self.status}'
