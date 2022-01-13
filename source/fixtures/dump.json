@@ -1,0 +1,134 @@
+[
+{
+    "model": "To_Do_list.task",
+    "pk": 1,
+    "fields": {
+        "summary": "Initial",
+        "description": "lorem ipsup",
+        "status": 1,
+        "type": 1,
+        "created_at": "2022-01-13T12:09:56.622Z",
+        "update": "2022-01-13T12:09:56.622Z"
+    }
+},
+{
+    "model": "To_Do_list.task",
+    "pk": 2,
+    "fields": {
+        "summary": "Number two initial",
+        "description": "",
+        "status": 2,
+        "type": 2,
+        "created_at": "2022-01-13T12:10:09.928Z",
+        "update": "2022-01-13T12:10:09.928Z"
+    }
+},
+{
+    "model": "To_Do_list.task",
+    "pk": 3,
+    "fields": {
+        "summary": "Following",
+        "description": "Ipsum lorem",
+        "status": 3,
+        "type": 3,
+        "created_at": "2022-01-13T12:10:39.332Z",
+        "update": "2022-01-13T12:10:39.332Z"
+    }
+},
+{
+    "model": "To_Do_list.task",
+    "pk": 4,
+    "fields": {
+        "summary": "progress",
+        "description": "",
+        "status": 2,
+        "type": 1,
+        "created_at": "2022-01-13T12:11:04.859Z",
+        "update": "2022-01-13T12:11:04.859Z"
+    }
+},
+{
+    "model": "To_Do_list.task",
+    "pk": 5,
+    "fields": {
+        "summary": "Also done",
+        "description": "For something",
+        "status": 3,
+        "type": 1,
+        "created_at": "2022-01-13T12:11:27.195Z",
+        "update": "2022-01-13T12:11:27.195Z"
+    }
+},
+{
+    "model": "To_Do_list.task",
+    "pk": 6,
+    "fields": {
+        "summary": "Bugging",
+        "description": "Not true also false",
+        "status": 1,
+        "type": 2,
+        "created_at": "2022-01-13T12:11:54.632Z",
+        "update": "2022-01-13T12:11:54.632Z"
+    }
+},
+{
+    "model": "To_Do_list.type",
+    "pk": 1,
+    "fields": {
+        "type": "Task"
+    }
+},
+{
+    "model": "To_Do_list.type",
+    "pk": 2,
+    "fields": {
+        "type": "Bug"
+    }
+},
+{
+    "model": "To_Do_list.type",
+    "pk": 3,
+    "fields": {
+        "type": "Enhancement"
+    }
+},
+{
+    "model": "To_Do_list.status",
+    "pk": 1,
+    "fields": {
+        "status": "New"
+    }
+},
+{
+    "model": "To_Do_list.status",
+    "pk": 2,
+    "fields": {
+        "status": "In Progress"
+    }
+},
+{
+    "model": "To_Do_list.status",
+    "pk": 3,
+    "fields": {
+        "status": "Done"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$alvwqpiVuusAICgIlXIXqZ$nLwnNc8ZyGqo9xAR92uTL1gJ5vxYgyXNQgJtIZl00BI=",
+        "last_login": "2022-01-13T11:04:55.497Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-01-13T11:04:47.761Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]
