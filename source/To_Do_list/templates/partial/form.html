@@ -1,12 +1,5 @@
 {% csrf_token %}
 
-<label>Status:</label><br/>
-<select name="status">
-    {% for choice in status %}
-        <option value="{{ choice.0 }}">{{ choice.1 }}</option>
-    {% endfor %}
-</select><br/>
-
 {{ form.as_p }}
 
 <input type="submit" value={{ button_text }} />

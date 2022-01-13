@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from To_Do_list.forms import TaskForm
-from To_Do_list.models import Task, STATUS_CHOICES
+from To_Do_list.models import Task
 
 
 def index_view(request):
@@ -10,7 +10,7 @@ def index_view(request):
 def add_task_view(request, **kwargs):
     if request.method == 'GET':
         form = TaskForm()
-        return render(request, 'task_create.html', {"status": STATUS_CHOICES, "form": form})
+        return render(request, 'task_create.html', {"form": form})
     else:
         form = TaskForm(data=request.POST)
         status = request.POST.get('status')
@@ -22,7 +22,7 @@ def add_task_view(request, **kwargs):
                                            detailed_description=detailed_description, to_do_at=to_do_at)
             return redirect("one_task_view", pk=new_task.pk)
         else:
-            return render(request, 'task_create.html', {"status": STATUS_CHOICES, "form": form})
+            return render(request, 'task_create.html', {"form": form})
 
 
 def view_tasks_view(request):
@@ -33,10 +33,6 @@ def view_tasks_view(request):
 
 
 def one_task_view(request, pk):
-    # try:
-    #     task = Task.objects.get(pk=pk)
-    # except Task.DoesNotExist:
-    #     raise Http404
     task = get_object_or_404(Task, pk=pk)
     context = {"task": task}
     return render(request, 'one_task.html', context)
@@ -50,7 +46,7 @@ def task_update_view(request, pk):
             'description': task.description,
             'to_do_at': task.to_do_at
         })
-        return render(request, 'task_update.html', {"task": task, "form": form, "status": STATUS_CHOICES})
+        return render(request, 'task_update.html', {"task": task, "form": form})
     else:
         form = TaskForm(data=request.POST)
         task.status = request.POST.get('status')
@@ -61,7 +57,7 @@ def task_update_view(request, pk):
             task.save()
             return redirect("one_task_view", pk=task.pk)
         else:
-            return render(request, 'task_update.html', {"task": task, "form": form, "status": STATUS_CHOICES})
+            return render(request, 'task_update.html', {"task": task, "form": form})
 
 
 def task_delete_view(request, pk):
