@@ -3,12 +3,18 @@
 {% block nav %} {% endblock %}
 {% block content %}
 <h1>Список задач!</h1>
-    {% for task in tasks %}
-        <hr style="border: 3px solid red;">
-        <h2>Статус: {{ task.status }}</h2>
-        <h2>Заголовок: {{ task.summary }}</h2>
-        <p><a href="{% url "one_task_view" task.pk %}">Детальный просмотр...</a></p>
-        <hr style="border: 3px solid red;">
-    {% endfor %}
 
+    {% for task in tasks %}
+        <br>
+        <div class="card" style="max-width: 400px;">
+          <div class="card-header">
+            Статус: {{ task.status }}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Заголовок: {{ task.summary }}</h5>
+            <a href="{% url "one_task_view" task.pk %}" class="btn btn" style="float: right">
+                Детальный просмотр...</a>
+          </div>
+        </div>
+    {% endfor %}
 {% endblock %}

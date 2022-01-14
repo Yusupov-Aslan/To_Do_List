@@ -12,9 +12,14 @@
     </li>
 {% endblock %}
 {% block content %}
-    <h2>Статус: {{ task.status }}</h2>
-    <h2>Тип: {{ task.type }}</h2>
-    <p> Заголовок:{{ task.summary }}</p>
-    <p> Подробное описание:{{ task.description }}</p>
-    <p><a href="{% url "view_tasks_view" %}">Назад</a></p>
+        <br>
+    <div class="card border-info mb-3" style="max-width: 25rem;">
+      <div class="card-header bg-transparent border-info">Статус: {{ task.status }}<br>Тип: {{ task.type }}</div>
+      <div class="card-body ">
+        <h5 class="card-title">Заголовок:{{ task.summary }}</h5>
+        <p class="card-text">Подробное описание:{{ task.description }}</p>
+      </div>
+      <div class="card-footer bg-transparent border-info">
+          <a href="{% url "view_tasks_view" %}" class="btn btn" style="float: right">Назад</a></div>
+    </div>
 {% endblock %}

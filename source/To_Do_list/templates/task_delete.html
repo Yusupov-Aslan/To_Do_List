@@ -2,12 +2,23 @@
 {% block title %}Удаление задачи{% endblock %}
 {% block nav %} {% endblock %}
 {% block content %}
-    <div>
+        <div>
         <form action="{% url 'task_delete_view' task.pk %}" method="POST">
         {% csrf_token %}
-        <h2>Вы действительно хотите удалить задачу {{ task.summary }}</h2>
-        <input type="submit" value="Да">
+            <div class="card text-center" style="max-width: 25rem;">
+              <div class="card-header">
+                  </div>
+              <div class="card-body">
+                <h5 class="card-title">Удаление задачи!</h5>
+                <p class="card-text">Вы действительно хотите удалить задачу!!! <br> {{ task.summary }}</p>
+                <div class="gap-2 col-6" style="float: right">
+                    <a><button class="btn btn-danger" type="submit">Да</button></a>
+                    <a href="{% url 'one_task_view' task.pk %}"><button class="btn btn-primary" type="button">Нет</button></a>
+                </div>
+              </div>
+              <div class="card-footer">
+                </div>
+            </div>
         </form>
-        <a href="{% url 'one_task_view' task.pk %}">Нет</a>
     </div>
 {% endblock %}
