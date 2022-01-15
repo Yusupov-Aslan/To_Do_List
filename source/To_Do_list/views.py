@@ -52,7 +52,7 @@ class UpdateView(View):
     def get(self, request, pk):
         task = get_object_or_404(Task, pk=pk)
         form = TaskForm(initial={
-            'type': task.type,
+            'type': task.type.all(),
             'status': task.status,
             'summary': task.summary,
             'description': task.description

@@ -14,10 +14,11 @@
 {% block content %}
         <br>
     <div class="card border-info mb-3" style="max-width: 25rem;">
-      <div class="card-header bg-transparent border-info">Статус: {{ task.status }}<br>Тип: {{ task.type }}</div>
+      <div class="card-header bg-transparent border-info">Статус: {{ task.status }}<br>Тип:
+          {% for type in task.type.all %}{{ type.type  }}{% if not forloop.last %}, {% endif %}{% endfor %}</div>
       <div class="card-body ">
-        <h5 class="card-title">Заголовок:{{ task.summary }}</h5>
-        <p class="card-text">Подробное описание:{{ task.description }}</p>
+        <h5 class="card-title">Заголовок: {{ task.summary }}</h5>
+        <p class="card-text">Подробное описание: {{ task.description }}</p>
       </div>
       <div class="card-footer bg-transparent border-info">
           <a href="{% url "view_tasks_view" %}" class="btn btn" style="float: right">Назад</a></div>
