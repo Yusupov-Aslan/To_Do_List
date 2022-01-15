@@ -19,12 +19,13 @@ class AddView(View):
     def post(self, request, **kwargs):
         form = TaskForm(data=request.POST)
         if form.is_valid():
-            type = form.cleaned_data.get('type')
+            type = form.cleaned_data.pop('type')
             status = form.cleaned_data.get('status')
             summary = form.cleaned_data.get('summary')
             description = form.cleaned_data.get('description')
-            new_task = Task.objects.create(type=type, status=status,
+            new_task = Task.objects.create(status=status,
                                            summary=summary, description=description)
+            new_task.type.set(type)
             return redirect("one_task_view", pk=new_task.pk)
         else:
             return render(request, 'task_create.html', {"form": form})
@@ -68,6 +69,7 @@ class UpdateView(View):
             task.summary = form.cleaned_data.get('summary')
             task.description = form.cleaned_data.get('description')
             task.save()
+            task.type.set(type)
             return redirect("one_task_view", pk=task.pk)
         else:
             return render(request, 'task_update.html', {"task": task, "form": form})
