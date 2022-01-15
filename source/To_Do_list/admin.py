@@ -7,8 +7,9 @@ class TaskAdmin(admin.ModelAdmin):
     list_display = ['id', 'status', 'description', 'created_at']
     list_filter = ['status']
     search_fields = ['status']
-    fields = ['status', 'summary', 'description']
+    fields = ['type', 'status', 'summary', 'description']
     readonly_fields = ['created_at']
+    filter_horizontal = ['type']
 
 
 admin.site.register(Task, TaskAdmin)
