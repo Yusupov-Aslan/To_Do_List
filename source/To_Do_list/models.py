@@ -8,7 +8,9 @@ class Task(models.Model):
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name="Полное описание")
     status = models.ForeignKey('To_Do_list.Status', on_delete=models.PROTECT,
                                related_name='Status', verbose_name='Статус')
-    type = models.ForeignKey('To_Do_list.Type', on_delete=models.PROTECT, related_name='Type', verbose_name='Тип')
+    type = models.ManyToManyField('To_Do_list.Type', related_name='tasks', through='To_Do_list.TaskType',
+                                  through_fields=('task', 'type'), blank=True)
+
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
     update = models.DateTimeField(auto_now=True, verbose_name="Время обновления")
 
@@ -43,3 +45,13 @@ class Status(models.Model):
         db_table = 'status'
         verbose_name = 'Статус'
         verbose_name_plural = 'Статусы'
+
+
+class TaskType(models.Model):
+    task = models.ForeignKey('To_Do_list.Task', on_delete=models.PROTECT,
+                             related_name='Task', verbose_name='Задача')
+    type = models.ForeignKey('To_Do_list.Type', on_delete=models.PROTECT,
+                             related_name='Type', verbose_name='Тип')
+
+    def __str__(self):
+        return f"{self.task}|{self.type}"
