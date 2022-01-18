@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
 
 from To_Do_list.base import FormView as CustomFormView
 from To_Do_list.forms import TaskForm
@@ -26,26 +27,6 @@ class AddView(CustomFormView):
         return redirect("one_task_view", pk=self.object.pk)
 
 
-# class AddView(View):
-#     def get(self, request):
-#         form = TaskForm()
-#         return render(request, 'task_create.html', {"form": form})
-#
-#     def post(self, request, **kwargs):
-#         form = TaskForm(data=request.POST)
-#         if form.is_valid():
-#             type = form.cleaned_data.pop('type')
-#             status = form.cleaned_data.get('status')
-#             summary = form.cleaned_data.get('summary')
-#             description = form.cleaned_data.get('description')
-#             new_task = Task.objects.create(status=status,
-#                                            summary=summary, description=description)
-#             new_task.type.set(type)
-#             return redirect("one_task_view", pk=new_task.pk)
-#         else:
-#             return render(request, 'task_create.html', {"form": form})
-
-
 class TasksView(View):
     def get(self, request):
         task = Task.objects.order_by("-created_at")
@@ -62,32 +43,40 @@ class One_Task_View(TemplateView):
         return super().get_context_data(**kwargs)
 
 
-class UpdateView(View):
+class UpdateView(FormView):
+    template_name = 'task_update.html'
+    form_class = TaskForm
 
-    def get(self, request, pk):
-        task = get_object_or_404(Task, pk=pk)
-        form = TaskForm(initial={
-            'type': task.type.all(),
-            'status': task.status,
-            'summary': task.summary,
-            'description': task.description
+    def dispatch(self, request, *args, **kwargs):
+        self.task = self.get_object()
+        return super(UpdateView, self).dispatch(request, *args, **kwargs)
 
-        })
-        return render(request, 'task_update.html', {"task": task, "form": form})
+    def get_initial(self):
+        initial = {}
+        for key in 'status', 'summary', 'description':
+            initial[key] = getattr(self.task, key)
+        initial['type'] = self.task.type.all()
+        return initial
 
-    def post(self, request, pk):
-        task = get_object_or_404(Task, pk=pk)
-        form = TaskForm(data=request.POST)
-        if form.is_valid():
-            task.type = form.cleaned_data.get('type')
-            task.status = form.cleaned_data.get('status')
-            task.summary = form.cleaned_data.get('summary')
-            task.description = form.cleaned_data.get('description')
-            task.save()
-            task.type.set(type)
-            return redirect("one_task_view", pk=task.pk)
-        else:
-            return render(request, 'task_update.html', {"task": task, "form": form})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['task'] = self.task
+        return context
+
+    def form_valid(self, form):
+        type = form.cleaned_data.pop('type')
+        for key, value in form.cleaned_data.items():
+            if value is not None:
+                setattr(self.task, key, value)
+        self.task.save()
+        self.task.type.set(type)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('one_task_view', kwargs={'pk': self.task.pk})
+
+    def get_object(self):
+        return get_object_or_404(Task, pk=self.kwargs.get('pk'))
 
 
 class DeleteView(View):
