@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.views.generic import TemplateView
 
+from To_Do_list.base import FormView as CustomFormView
 from To_Do_list.forms import TaskForm
 from To_Do_list.models import Task
 
@@ -11,24 +12,38 @@ class IndexView(View):
         return render(request, 'index.html')
 
 
-class AddView(View):
-    def get(self, request):
-        form = TaskForm()
-        return render(request, 'task_create.html', {"form": form})
+class AddView(CustomFormView):
+    form_class = TaskForm
+    template_name = "task_create.html"
 
-    def post(self, request, **kwargs):
-        form = TaskForm(data=request.POST)
-        if form.is_valid():
-            type = form.cleaned_data.pop('type')
-            status = form.cleaned_data.get('status')
-            summary = form.cleaned_data.get('summary')
-            description = form.cleaned_data.get('description')
-            new_task = Task.objects.create(status=status,
-                                           summary=summary, description=description)
-            new_task.type.set(type)
-            return redirect("one_task_view", pk=new_task.pk)
-        else:
-            return render(request, 'task_create.html', {"form": form})
+    def form_valid(self, form):
+        type = form.cleaned_data.pop('type')
+        self.object = Task.objects.create(**form.cleaned_data)
+        self.object.type.set(type)
+        return super().form_valid(form)
+
+    def get_redirect_url(self):
+        return redirect("one_task_view", pk=self.object.pk)
+
+
+# class AddView(View):
+#     def get(self, request):
+#         form = TaskForm()
+#         return render(request, 'task_create.html', {"form": form})
+#
+#     def post(self, request, **kwargs):
+#         form = TaskForm(data=request.POST)
+#         if form.is_valid():
+#             type = form.cleaned_data.pop('type')
+#             status = form.cleaned_data.get('status')
+#             summary = form.cleaned_data.get('summary')
+#             description = form.cleaned_data.get('description')
+#             new_task = Task.objects.create(status=status,
+#                                            summary=summary, description=description)
+#             new_task.type.set(type)
+#             return redirect("one_task_view", pk=new_task.pk)
+#         else:
+#             return render(request, 'task_create.html', {"form": form})
 
 
 class TasksView(View):
