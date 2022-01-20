@@ -1,55 +1,44 @@
 [
 {
     "model": "To_Do_list.task",
-    "pk": 1,
+    "pk": 7,
     "fields": {
-        "summary": "Initial",
-        "description": "lorem ipsup",
-        "status": 1,
-        "created_at": "2022-01-15T18:24:59.252Z",
-        "update": "2022-01-15T18:24:59.252Z",
-        "type": [
-            1
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 2,
-    "fields": {
-        "summary": "Number two initial",
-        "description": "ipsup lorem",
+        "summary": "Also done",
+        "description": "",
         "status": 2,
-        "created_at": "2022-01-15T18:31:49.381Z",
-        "update": "2022-01-15T18:31:49.381Z",
+        "created_at": "2022-01-17T10:45:50.066Z",
+        "update": "2022-01-17T10:45:50.066Z",
         "type": [
-            2
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 3,
-    "fields": {
-        "summary": "Following",
-        "description": "лорем",
-        "status": 3,
-        "created_at": "2022-01-15T18:48:00.490Z",
-        "update": "2022-01-15T18:48:00.490Z",
-        "type": [
+            1,
+            2,
             3
         ]
     }
 },
 {
     "model": "To_Do_list.task",
-    "pk": 5,
+    "pk": 22,
     "fields": {
-        "summary": "Also done",
-        "description": "",
+        "summary": "Initial",
+        "description": "For loop",
+        "status": 1,
+        "created_at": "2022-01-20T06:45:30.783Z",
+        "update": "2022-01-20T06:45:30.783Z",
+        "type": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "To_Do_list.task",
+    "pk": 23,
+    "fields": {
+        "summary": "Number two initial",
+        "description": "For if loop",
         "status": 2,
-        "created_at": "2022-01-15T18:53:27.442Z",
-        "update": "2022-01-15T18:53:27.442Z",
+        "created_at": "2022-01-20T06:45:51.507Z",
+        "update": "2022-01-20T06:45:51.507Z",
         "type": [
             2,
             3
@@ -58,13 +47,44 @@
 },
 {
     "model": "To_Do_list.task",
-    "pk": 6,
+    "pk": 24,
+    "fields": {
+        "summary": "Following",
+        "description": "qwerty",
+        "status": 3,
+        "created_at": "2022-01-20T06:46:34.632Z",
+        "update": "2022-01-20T06:46:34.633Z",
+        "type": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "To_Do_list.task",
+    "pk": 25,
+    "fields": {
+        "summary": "Bugging",
+        "description": "",
+        "status": 2,
+        "created_at": "2022-01-20T06:47:00.420Z",
+        "update": "2022-01-20T06:47:00.420Z",
+        "type": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "To_Do_list.task",
+    "pk": 26,
     "fields": {
         "summary": "Also done",
-        "description": "Вот и все",
+        "description": "Awesome",
         "status": 3,
-        "created_at": "2022-01-15T18:59:09.878Z",
-        "update": "2022-01-15T18:59:09.878Z",
+        "created_at": "2022-01-20T06:47:29.143Z",
+        "update": "2022-01-20T06:47:29.143Z",
         "type": [
             1,
             2,
