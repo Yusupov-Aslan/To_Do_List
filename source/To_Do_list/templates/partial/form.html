@@ -1,5 +1,13 @@
 {% csrf_token %}
 
-{{ form.as_p }}
+{% for field in form %}
+    <p><label for="{{ field.id_for_label }}">{{ field.label }}</label></p>
+    {% for error in field.errors %}
+        <p class="text-danger">{{ error }}</p>
+    {% endfor %}
+    {{ field }}
+{% endfor %}
+
+<br>
 
 <input type="submit" value={{ button_text }} />

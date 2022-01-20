@@ -1,11 +1,36 @@
 from django.db import models
+from django.core.validators import BaseValidator
+from django.utils.deconstruct import deconstructible
 
-# Create your models here.
+
+@deconstructible
+class MinLengthValidator(BaseValidator):
+    message = 'Значение "%(value)s" имеет длину %(show_value)d символа!Должно быть не менее %(limit_value)d символов!'
+    code = 'too_short'
+
+    def compare(self, a, b):
+        return a < b
+
+    def clean(self, x):
+        return len(x)
+
+
+@deconstructible
+class MaxLengthValidator(BaseValidator):
+    message = 'Убедитесь, что это значение содержит не более %(limit_value)d символов (у него %(show_value)d). '
+    code = 'max_length'
+
+    def compare(self, a, b):
+        return a > b
+
+    def clean(self, x):
+        return len(x)
 
 
 class Task(models.Model):
-    summary = models.CharField(max_length=20, verbose_name="Краткое описание")
-    description = models.TextField(max_length=2000, null=True, blank=True, verbose_name="Полное описание")
+    summary = models.CharField(max_length=20, verbose_name="Краткое описание", validators=(MinLengthValidator(5),))
+    description = models.TextField(max_length=2000, null=True, blank=True,
+                                   verbose_name="Полное описание", validators=(MaxLengthValidator(200),))
     status = models.ForeignKey('To_Do_list.Status', on_delete=models.PROTECT,
                                related_name='Status', verbose_name='Статус')
     type = models.ManyToManyField('To_Do_list.Type', related_name='tasks', verbose_name='Тип')
