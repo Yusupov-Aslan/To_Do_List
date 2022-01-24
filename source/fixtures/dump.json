@@ -93,6 +93,20 @@
     }
 },
 {
+    "model": "To_Do_list.task",
+    "pk": 27,
+    "fields": {
+        "summary": "Bugging",
+        "description": "Bugging",
+        "status": 3,
+        "created_at": "2022-01-24T09:09:24.917Z",
+        "update": "2022-01-24T09:09:24.917Z",
+        "type": [
+            2
+        ]
+    }
+},
+{
     "model": "To_Do_list.type",
     "pk": 1,
     "fields": {
