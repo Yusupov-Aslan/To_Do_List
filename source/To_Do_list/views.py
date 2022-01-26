@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.views import View
 from django.views.generic import TemplateView, FormView
 
-from To_Do_list.base import FormView as CustomFormView
+from To_Do_list.base import FormView as CustomFormView, ListView as CustomListView
 from To_Do_list.forms import TaskForm
 from To_Do_list.models import Task
 
@@ -25,11 +25,12 @@ class AddView(CustomFormView):
         return redirect("one_task_view", pk=self.object.pk)
 
 
-class TasksView(View):
-    def get(self, request):
-        task = Task.objects.order_by("-created_at")
-        context = {'tasks': task}
-        return render(request, 'tasks_view.html', context)
+class TasksView(CustomListView):
+    context_key = 'tasks'
+    template_name = 'tasks_view.html'
+
+    def get_objects(self):
+        return Task.objects.order_by('-created_at')
 
 
 class One_Task_View(TemplateView):
