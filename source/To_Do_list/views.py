@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.views import View
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, ListView
 
-from To_Do_list.base import FormView as CustomFormView, ListView as CustomListView
+from To_Do_list.base import FormView as CustomFormView
 from To_Do_list.forms import TaskForm
 from To_Do_list.models import Task
 
@@ -25,12 +25,22 @@ class AddView(CustomFormView):
         return redirect("one_task_view", pk=self.object.pk)
 
 
-class TasksView(CustomListView):
-    context_key = 'tasks'
+class TasksView(ListView):
+    model = Task
+    context_object_name = 'tasks'
     template_name = 'tasks_view.html'
+    paginate_by = 3
 
-    def get_objects(self):
-        return Task.objects.order_by('-created_at')
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.order_by('-created_at')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        return context
+
+    # def get_objects(self):
+    #     return Task.objects.order_by('-created_at')
 
 
 class One_Task_View(TemplateView):
