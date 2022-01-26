@@ -39,9 +39,6 @@ class TasksView(ListView):
         context = super().get_context_data(object_list=object_list, **kwargs)
         return context
 
-    # def get_objects(self):
-    #     return Task.objects.order_by('-created_at')
-
 
 class One_Task_View(TemplateView):
     template_name = 'one_task.html'

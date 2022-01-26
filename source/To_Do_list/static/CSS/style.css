@@ -1,3 +1,8 @@
+.container a {
+    color: red;
+}
+
+
 .pagination {
     text-align: center;
 
