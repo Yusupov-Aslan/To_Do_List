@@ -9,3 +9,6 @@ class TaskForm(forms.ModelForm):
         fields = ['type', 'status', 'summary', 'description']
         widgets = {'type': CheckboxSelectMultiple(), 'description': Textarea(attrs={"rows": 1, "cols": 24})}
 
+
+class SearchForm(forms.Form):
+    search = forms.CharField(max_length=40, required=False, label="Найти")

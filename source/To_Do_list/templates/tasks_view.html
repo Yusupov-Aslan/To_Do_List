@@ -3,7 +3,7 @@
 {% block nav %} {% endblock %}
 {% block content %}
 <h1>Список задач!</h1>
-
+{% include 'partial/simple_search.html' %}
 {% if is_paginated %}
    {% include 'partial/pagination.html' %}
 {% endif %}
