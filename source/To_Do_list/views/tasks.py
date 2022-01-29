@@ -5,19 +5,19 @@ from django.utils.http import urlencode
 from django.views import View
 from django.views.generic import TemplateView, FormView, ListView
 
-from To_Do_list.base import FormView as CustomFormView
+from To_Do_list.views.base import FormView as CustomFormView
 from To_Do_list.forms import TaskForm, SearchForm
 from To_Do_list.models import Task
 
 
 class IndexView(View):
     def get(self, request):
-        return render(request, 'index.html')
+        return render(request, 'tasks/index.html')
 
 
 class AddView(CustomFormView):
     form_class = TaskForm
-    template_name = "task_create.html"
+    template_name = "tasks/create.html"
 
     def form_valid(self, form):
         self.object = form.save()
@@ -30,7 +30,7 @@ class AddView(CustomFormView):
 class TasksView(ListView):
     model = Task
     context_object_name = 'tasks'
-    template_name = 'tasks_view.html'
+    template_name = 'tasks/view.html'
     paginate_by = 10
 
     def get(self, request, *args, **kwargs):
@@ -63,7 +63,7 @@ class TasksView(ListView):
 
 
 class One_Task_View(TemplateView):
-    template_name = 'one_task.html'
+    template_name = 'tasks/one_task.html'
 
     def get_context_data(self, **kwargs):
         task = get_object_or_404(Task, pk=kwargs.get("pk"))
@@ -72,7 +72,7 @@ class One_Task_View(TemplateView):
 
 
 class UpdateView(FormView):
-    template_name = 'task_update.html'
+    template_name = 'tasks/update.html'
     form_class = TaskForm
 
     def dispatch(self, request, *args, **kwargs):
@@ -104,7 +104,7 @@ class DeleteView(View):
 
     def get(self, request, **kwargs):
         task = get_object_or_404(Task, pk=kwargs.get("pk"))
-        return render(request, 'task_delete.html', {"task": task})
+        return render(request, 'tasks/delete.html', {"task": task})
 
     def post(self, request, **kwargs):
         task = get_object_or_404(Task, pk=kwargs.get("pk"))
