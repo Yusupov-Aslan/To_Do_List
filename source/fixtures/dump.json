@@ -1,325 +1,14 @@
 [
 {
     "model": "To_Do_list.task",
-    "pk": 7,
-    "fields": {
-        "summary": "Also done",
-        "description": "",
-        "status": 2,
-        "created_at": "2022-01-17T10:45:50.066Z",
-        "update": "2022-01-17T10:45:50.066Z",
-        "type": [
-            1,
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 22,
+    "pk": 1,
     "fields": {
         "summary": "Initial",
-        "description": "For loop",
-        "status": 1,
-        "created_at": "2022-01-20T06:45:30.783Z",
-        "update": "2022-01-20T06:45:30.783Z",
-        "type": [
-            1,
-            2
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 23,
-    "fields": {
-        "summary": "Number two initial",
-        "description": "For if loop",
-        "status": 2,
-        "created_at": "2022-01-20T06:45:51.507Z",
-        "update": "2022-01-20T06:45:51.507Z",
-        "type": [
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 24,
-    "fields": {
-        "summary": "Following",
-        "description": "qwerty",
-        "status": 3,
-        "created_at": "2022-01-20T06:46:34.632Z",
-        "update": "2022-01-20T06:46:34.633Z",
-        "type": [
-            1,
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 25,
-    "fields": {
-        "summary": "Bugging",
         "description": "",
-        "status": 2,
-        "created_at": "2022-01-20T06:47:00.420Z",
-        "update": "2022-01-20T06:47:00.420Z",
-        "type": [
-            1,
-            2
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 26,
-    "fields": {
-        "summary": "Also done",
-        "description": "Awesome",
-        "status": 3,
-        "created_at": "2022-01-20T06:47:29.143Z",
-        "update": "2022-01-20T06:47:29.143Z",
-        "type": [
-            1,
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 27,
-    "fields": {
-        "summary": "Bugging",
-        "description": "Bugging",
-        "status": 3,
-        "created_at": "2022-01-24T09:09:24.917Z",
-        "update": "2022-01-24T09:09:24.917Z",
-        "type": [
-            2
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 28,
-    "fields": {
-        "summary": "Начало",
-        "description": "Около чего то",
-        "status": 2,
-        "created_at": "2022-01-27T06:07:25.862Z",
-        "update": "2022-01-27T06:07:25.862Z",
-        "type": [
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 29,
-    "fields": {
-        "summary": "After",
-        "description": "befor",
-        "status": 2,
-        "created_at": "2022-01-27T06:13:15.218Z",
-        "update": "2022-01-27T06:13:15.218Z",
-        "type": [
-            1,
-            2
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 30,
-    "fields": {
-        "summary": "Новая",
-        "description": "старая",
         "status": 1,
-        "created_at": "2022-01-27T06:13:38.783Z",
-        "update": "2022-01-27T06:13:38.783Z",
+        "created_at": "2022-01-31T10:32:28.622Z",
+        "update": "2022-01-31T10:32:28.622Z",
         "type": [
-            2
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 31,
-    "fields": {
-        "summary": "Апять",
-        "description": "снова",
-        "status": 1,
-        "created_at": "2022-01-27T06:13:58.155Z",
-        "update": "2022-01-27T06:13:58.155Z",
-        "type": [
-            2
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 32,
-    "fields": {
-        "summary": "Арбузы",
-        "description": "купить",
-        "status": 2,
-        "created_at": "2022-01-27T06:14:24.858Z",
-        "update": "2022-01-27T06:14:24.858Z",
-        "type": [
-            1,
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 33,
-    "fields": {
-        "summary": "Атомная",
-        "description": "Бомба",
-        "status": 2,
-        "created_at": "2022-01-27T06:14:42.750Z",
-        "update": "2022-01-27T06:14:42.750Z",
-        "type": [
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 34,
-    "fields": {
-        "summary": "progress",
-        "description": "Not alone",
-        "status": 2,
-        "created_at": "2022-01-27T06:18:24.825Z",
-        "update": "2022-01-27T06:18:24.825Z",
-        "type": [
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 35,
-    "fields": {
-        "summary": "Компьютерная",
-        "description": "революция меняет все так стремительно. что только четырнадцатилетние действительно понимают, что происходит. Дейв Барри",
-        "status": 1,
-        "created_at": "2022-01-27T06:20:21.852Z",
-        "update": "2022-01-27T06:20:21.852Z",
-        "type": [
-            1
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 36,
-    "fields": {
-        "summary": "Компьютер",
-        "description": "это быстрый идиот без воображения. Эдуард Морган Форстер",
-        "status": 2,
-        "created_at": "2022-01-27T06:21:14.029Z",
-        "update": "2022-01-27T06:21:14.029Z",
-        "type": [
-            2
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 37,
-    "fields": {
-        "summary": "Also done",
-        "description": "Компьютер позволяет сделать больше ошибок за более короткое время, чем любое другое изобретение в истории человечества, за исключением разве что текилы и револьвера. Митч Ратклифф",
-        "status": 3,
-        "created_at": "2022-01-27T06:21:57.668Z",
-        "update": "2022-01-27T06:21:57.669Z",
-        "type": [
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 38,
-    "fields": {
-        "summary": "progress",
-        "description": "Надежно защищен только выключенный компьютер. Евгений Касперский",
-        "status": 2,
-        "created_at": "2022-01-27T06:23:15.886Z",
-        "update": "2022-01-27T06:23:15.886Z",
-        "type": [
-            2
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 39,
-    "fields": {
-        "summary": "Also done",
-        "description": "«Железо»: та часть компьютера, которую можно пнуть, в отличие от программного обеспечения, которое можно только обматерить.",
-        "status": 3,
-        "created_at": "2022-01-27T06:24:15.414Z",
-        "update": "2022-01-27T06:24:15.414Z",
-        "type": [
-            2
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 40,
-    "fields": {
-        "summary": "Know New",
-        "description": "Know New",
-        "status": 1,
-        "created_at": "2022-01-27T06:25:11.536Z",
-        "update": "2022-01-27T06:25:11.536Z",
-        "type": [
-            3
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 42,
-    "fields": {
-        "summary": "Обязательно читай",
-        "description": "„У моих детей, конечно, будет компьютер. Но первым делом они получат книги.“ —  Билл Гейтс",
-        "status": 2,
-        "created_at": "2022-01-27T06:29:45.149Z",
-        "update": "2022-01-27T06:29:45.149Z",
-        "type": [
-            2
-        ]
-    }
-},
-{
-    "model": "To_Do_list.task",
-    "pk": 43,
-    "fields": {
-        "summary": "Автомат",
-        "description": "Пулемет",
-        "status": 1,
-        "created_at": "2022-01-27T06:37:32.182Z",
-        "update": "2022-01-27T06:37:32.182Z",
-        "type": [
-            2,
             3
         ]
     }
@@ -367,11 +56,22 @@
     }
 },
 {
+    "model": "To_Do_list.project",
+    "pk": 1,
+    "fields": {
+        "date_begin": "2022-01-31",
+        "date_end": "2022-02-05",
+        "title": "Initial",
+        "description": "All at here!",
+        "task": 1
+    }
+},
+{
     "model": "auth.user",
     "pk": 1,
     "fields": {
-        "password": "pbkdf2_sha256$320000$vzflLVVC99yP8IJczaUG6S$0qi4UVUo3U2UM2o8yfZJ4Bilz7D0BIwSCPWic6LsBN8=",
-        "last_login": "2022-01-15T18:22:12.357Z",
+        "password": "pbkdf2_sha256$320000$s9AONRYme9Czif9hK30HZs$x0ZnThh3whdphHNuAH9+pViOVoXv1hoF7U3U4cg1kLg=",
+        "last_login": "2022-01-31T10:30:55.380Z",
         "is_superuser": true,
         "username": "admin",
         "first_name": "",
@@ -379,7 +79,7 @@
         "email": "",
         "is_staff": true,
         "is_active": true,
-        "date_joined": "2022-01-15T18:22:04.749Z",
+        "date_joined": "2022-01-31T10:30:51.029Z",
         "groups": [],
         "user_permissions": []
     }

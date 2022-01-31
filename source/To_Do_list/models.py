@@ -34,7 +34,6 @@ class Task(models.Model):
     status = models.ForeignKey('To_Do_list.Status', on_delete=models.PROTECT,
                                related_name='Status', verbose_name='Статус')
     type = models.ManyToManyField('To_Do_list.Type', related_name='tasks', verbose_name='Тип')
-
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
     update = models.DateTimeField(auto_now=True, verbose_name="Время обновления")
 
@@ -69,3 +68,21 @@ class Status(models.Model):
         db_table = 'status'
         verbose_name = 'Статус'
         verbose_name_plural = 'Статусы'
+
+
+class Project(models.Model):
+    date_begin = models.CharField(max_length=20, null=True, blank=False, verbose_name="Дата начала")
+    date_end = models.CharField(max_length=20, null=True, blank=True, verbose_name="Дата окончания")
+    title = models.CharField(max_length=20, verbose_name="Название", validators=(MinLengthValidator(5),))
+    description = models.TextField(max_length=2000, null=True, blank=True,
+                                   verbose_name="Описание", validators=(MaxLengthValidator(2000),))
+    task = models.ForeignKey('To_Do_list.Task', on_delete=models.CASCADE, related_name='projects', verbose_name='Задача')
+
+    def __str__(self):
+        return f"{self.pk}. {self.title}: {self.description}"
+
+    class Meta:
+        db_table = 'projects'
+        verbose_name = 'Проект'
+        verbose_name_plural = 'Проекты'
+
