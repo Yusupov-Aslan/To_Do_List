@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Список проектов{% endblock %}
+{% block nav %} {% endblock %}
+{% block content %}
+<h1>Список проектов!!</h1>
+    {% for project in projects %}
+        <br>
+        <div class="card" style="max-width: 400px;">
+          <div class="card-header"> </div>
+          <div class="card-body">
+            <h5 class="card-title">Название: {{ project.title }}</h5>
+            <a href="{% url "project_view" project.pk %}" class="btn btn" style="float: right">
+                Детальный просмотр...</a>
+          </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <br>
+    <div class="card border-info mb-3" style="max-width: 25rem;">
+      <div class="card-header bg-transparent border-info">Дата начала: {{ project.date_begin }}<br>Дата окончания:
+          {{ project.date_end }}  </div>
+      <div class="card-body ">
+        <h5 class="card-title">Название: {{ project.title }}</h5>
+        <p class="card-text">Описание: {{ project.description }}</p>
+      </div>
+      <div class="card-footer bg-transparent border-info">
+          <a href="{% url "projects_view" %}" class="btn btn" style="float: right">Назад</a></div>
+    </div>
+
+{% endblock %}
