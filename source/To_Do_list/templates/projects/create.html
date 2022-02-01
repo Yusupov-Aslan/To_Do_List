@@ -3,7 +3,8 @@
 {% block nav %} {% endblock %}
 {% block content %}
     <h1>Создание нового проекта!</h1>
+
     <form action="{% url "create_project_view" %}" method="post">
-      {% include 'partial/form.html' with button_text="Создать" %}
+    {% include 'partial/form.html' with action_url="" form_method='post' button_text="Создать"%}
     </form>
 {% endblock %}

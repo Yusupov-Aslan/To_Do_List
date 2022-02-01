@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import BaseValidator
+
 from django.utils.deconstruct import deconstructible
 
 
@@ -76,7 +77,8 @@ class Project(models.Model):
     title = models.CharField(max_length=20, verbose_name="Название", validators=(MinLengthValidator(5),))
     description = models.TextField(max_length=2000, null=True, blank=True,
                                    verbose_name="Описание", validators=(MaxLengthValidator(2000),))
-    task = models.ForeignKey('To_Do_list.Task', on_delete=models.CASCADE, related_name='projects', verbose_name='Задача')
+    task = models.ForeignKey('To_Do_list.Task', on_delete=models.CASCADE, related_name='tasks',
+                             verbose_name='Задачи')
 
     def __str__(self):
         return f"{self.pk}. {self.title}: {self.description}"

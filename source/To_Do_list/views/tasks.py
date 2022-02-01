@@ -3,11 +3,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils.http import urlencode
 from django.views import View
-from django.views.generic import TemplateView, FormView, ListView
+from django.views.generic import TemplateView, FormView, ListView, CreateView
 
 from To_Do_list.views.base import FormView as CustomFormView
 from To_Do_list.forms import TaskForm, SearchForm
-from To_Do_list.models import Task
+from To_Do_list.models import Task, Project
 
 
 class IndexView(View):
@@ -15,16 +15,17 @@ class IndexView(View):
         return render(request, 'tasks/index.html')
 
 
-class AddView(CustomFormView):
+class AddView(CreateView):
+    model = Task
     form_class = TaskForm
     template_name = "tasks/create.html"
 
     def form_valid(self, form):
-        self.object = form.save()
-        return super().form_valid(form)
-
-    def get_redirect_url(self):
-        return redirect("one_task_view", pk=self.object.pk)
+        project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
+        task = form.save(commit=False)
+        task.project = project
+        task.save()
+        return redirect('project_view', pk=project.pk)
 
 
 class TasksView(ListView):

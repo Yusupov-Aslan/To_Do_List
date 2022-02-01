@@ -1,5 +1,6 @@
 from django.views.generic import ListView, CreateView, DetailView
 from To_Do_list.models import Project
+from To_Do_list.forms import ProjectForm
 
 
 class ProjectListView(ListView):
@@ -13,13 +14,17 @@ class ProjectListView(ListView):
 
 
 class ProjectCreateView(CreateView):
-    template_name = 'projects/create.html'
     model = Project
-    fields = ['title', 'description', 'date_begin', 'date_end']
+    form_class = ProjectForm
+    template_name = 'projects/create.html'
 
 
 class ProjectDetailView(DetailView):
     template_name = 'projects/project.html'
+    model = Project
 
-    def get_queryset(self):
-        return Project.objects.all()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        task = self.get_object().task
+        context['task_id'] = task
+        return context

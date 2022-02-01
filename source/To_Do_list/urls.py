@@ -1,15 +1,16 @@
 from django.urls import path
 
 from To_Do_list.views import (
-    IndexView,
-    One_Task_View,
-    TasksView,
-    DeleteView,
-    AddView,
-    UpdateView,
-    ProjectCreateView,
-    ProjectListView, ProjectDetailView,
-)
+                                    IndexView,
+                                    One_Task_View,
+                                    TasksView,
+                                    DeleteView,
+                                    AddView,
+                                    UpdateView,
+                                    ProjectCreateView,
+                                    ProjectListView,
+                                    ProjectDetailView,
+                                )
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
