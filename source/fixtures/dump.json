@@ -17,43 +17,40 @@
 },
 {
     "model": "To_Do_list.task",
-    "pk": 3,
+    "pk": 17,
     "fields": {
-        "summary": "Number two initial",
-        "description": "qwertyu",
-        "status": 1,
-        "created_at": "2022-02-03T07:30:25.911Z",
-        "update": "2022-02-03T07:30:25.911Z",
-        "project": 1,
+        "summary": "Also done",
+        "description": "Awesome",
+        "status": 2,
+        "created_at": "2022-02-03T09:38:46.307Z",
+        "update": "2022-02-03T09:38:46.307Z",
+        "project": 6,
         "type": []
     }
 },
 {
     "model": "To_Do_list.task",
-    "pk": 4,
+    "pk": 18,
     "fields": {
-        "summary": "Also done",
-        "description": "qwertyu",
-        "status": 1,
-        "created_at": "2022-02-03T07:30:44.582Z",
-        "update": "2022-02-03T07:30:44.582Z",
-        "project": 1,
-        "type": [
-            1,
-            2
-        ]
+        "summary": "Following",
+        "description": "As far as you see!",
+        "status": 2,
+        "created_at": "2022-02-03T09:39:38.590Z",
+        "update": "2022-02-03T09:39:38.590Z",
+        "project": 6,
+        "type": []
     }
 },
 {
     "model": "To_Do_list.task",
-    "pk": 5,
+    "pk": 19,
     "fields": {
-        "summary": "Also done",
-        "description": "",
-        "status": 2,
-        "created_at": "2022-02-03T07:34:36.600Z",
-        "update": "2022-02-03T07:34:36.600Z",
-        "project": 3,
+        "summary": "Bugging",
+        "description": "Whats haping on!",
+        "status": 3,
+        "created_at": "2022-02-03T09:41:20.668Z",
+        "update": "2022-02-03T09:41:20.668Z",
+        "project": 7,
         "type": []
     }
 },
@@ -111,22 +108,22 @@
 },
 {
     "model": "To_Do_list.project",
-    "pk": 2,
+    "pk": 6,
     "fields": {
-        "date_begin": "2022-01-31",
+        "date_begin": "2022-02-03",
         "date_end": "2022-02-06",
-        "title": "qwertyu",
-        "description": "oiuytrew"
+        "title": "Tets2",
+        "description": "All what i want to do!"
     }
 },
 {
     "model": "To_Do_list.project",
-    "pk": 3,
+    "pk": 7,
     "fields": {
-        "date_begin": "2022-01-31",
-        "date_end": "2022-02-06",
-        "title": "qwertyu",
-        "description": "oiuytrew"
+        "date_begin": "2022-02-03",
+        "date_end": "2022-02-07",
+        "title": "Allall",
+        "description": "Alibaba"
     }
 },
 {

@@ -8,7 +8,7 @@
 {% block content %}
     <h1>Редактирование проекта</h1>
 
-    <form action="{% url "create_project_view" %}" method="post">
+    <form action="{% url "project_update_view" project.id %}" method="post">
        {% include 'partial/form.html' with button_text="Редактировать" %}
     </form>
 
