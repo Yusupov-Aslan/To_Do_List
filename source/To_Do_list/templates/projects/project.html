@@ -3,9 +3,9 @@
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="{% url 'project_update_view' project.pk%}">Редактировать проект</a>
     </li>
-{#    <li class="nav-item">#}
-{#       <a class="nav-link active" aria-current="page" href="{% url 'task_delete_view' task.pk%}">Удалить проект</a>#}
-{#    </li>#}
+    <li class="nav-item">
+       <a class="nav-link active" aria-current="page" href="{% url 'project_delete_view' project.pk%}">Удалить проект</a>
+    </li>
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="{% url 'task_project_view' project.id %}">Создание задачи</a>
     </li>

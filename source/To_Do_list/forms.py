@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from django.forms import CheckboxSelectMultiple, Textarea
 from To_Do_list.models import Task, Project
 
@@ -25,3 +26,14 @@ class TaskFormProject(forms.ModelForm):
         model = Task
         fields = ['type', 'status', 'summary', 'description']
         widgets = {'type': CheckboxSelectMultiple(), 'description': Textarea(attrs={"rows": 1, "cols": 24})}
+
+
+class ProjectDeleteForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ("title",)
+
+    def clean_title(self):
+        if self.instance.title != self.cleaned_data.get("title"):
+            raise ValidationError("Название статьи не соответствует")
+        return self.cleaned_data.get("title")

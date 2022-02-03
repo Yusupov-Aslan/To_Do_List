@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from To_Do_list.models import Project, Task
-from To_Do_list.forms import ProjectForm, TaskFormProject
+from To_Do_list.forms import ProjectForm, TaskFormProject, ProjectDeleteForm
 
 
 class ProjectListView(ListView):
@@ -53,10 +53,13 @@ class ProjectUpdateView(UpdateView):
 
 
 class ProjectDeleteView(DeleteView):
-    model = Task
+    model = Project
     template_name = 'projects/delete.html'
+    success_url = reverse_lazy('projects_view')
+    form_class = ProjectDeleteForm
 
-    def get_success_url(self):
-        task = get_object_or_404(Task, id=self.kwargs.get('pk'))
-        project_id = task.project_id
-        return reverse("project_view", kwargs={'pk': project_id})
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.request.method == "POST":
+            kwargs['instance'] = self.object
+        return kwargs
