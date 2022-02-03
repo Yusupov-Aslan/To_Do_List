@@ -6,7 +6,7 @@ from To_Do_list.models import Task, Project
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ['type', 'status', 'summary', 'description']
+        fields = ['type', 'status', 'summary', 'description', 'project']
         widgets = {'type': CheckboxSelectMultiple(), 'description': Textarea(attrs={"rows": 1, "cols": 24})}
 
 
@@ -18,3 +18,10 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ("date_begin", "date_end", "title", "description")
+
+
+class TaskFormProject(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['type', 'status', 'summary', 'description']
+        widgets = {'type': CheckboxSelectMultiple(), 'description': Textarea(attrs={"rows": 1, "cols": 24})}

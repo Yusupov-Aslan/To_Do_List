@@ -37,6 +37,8 @@ class Task(models.Model):
     type = models.ManyToManyField('To_Do_list.Type', related_name='tasks', verbose_name='Тип')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
     update = models.DateTimeField(auto_now=True, verbose_name="Время обновления")
+    project = models.ForeignKey('To_Do_list.Project', on_delete=models.CASCADE, default=1, related_name='tasks',
+                                verbose_name='Проект')
 
     def __str__(self):
         return f"{self.pk}. {self.summary}: {self.status} - {self.type}"
@@ -77,8 +79,6 @@ class Project(models.Model):
     title = models.CharField(max_length=20, verbose_name="Название", validators=(MinLengthValidator(5),))
     description = models.TextField(max_length=2000, null=True, blank=True,
                                    verbose_name="Описание", validators=(MaxLengthValidator(2000),))
-    task = models.ForeignKey('To_Do_list.Task', on_delete=models.CASCADE, related_name='tasks',
-                             verbose_name='Задачи')
 
     def __str__(self):
         return f"{self.pk}. {self.title}: {self.description}"

@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
-{% block nav %} {% endblock %}
+{% block nav %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'task_project_view' project.id %}">Создание задачи</a>
+        </li>
+{% endblock %}
 {% block content %}
         <br>
     <div class="card border-info mb-3" style="max-width: 25rem;">
@@ -12,5 +16,20 @@
       <div class="card-footer bg-transparent border-info">
           <a href="{% url "projects_view" %}" class="btn btn" style="float: right">Назад</a></div>
     </div>
+    <h1>Список задач!</h1>
+           {% for task in project.tasks.all %}
+                          <br>
+                <div class="card" style="max-width: 400px;">
+                  <div class="card-header">
+                    Статус: {{ task.status }}
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Заголовок: {{ task.summary }}</h5>
+                    <a href="{% url "one_task_view" task.pk %}" class="btn btn" style="float: right">
+                        Детальный просмотр...</a>
+                  </div>
+                </div>
+            {% endfor %}
+
 
 {% endblock %}
