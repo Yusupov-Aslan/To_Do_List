@@ -1,16 +1,60 @@
 [
 {
     "model": "To_Do_list.task",
-    "pk": 1,
+    "pk": 2,
     "fields": {
-        "summary": "Initial",
+        "summary": "qweqwe",
         "description": "",
         "status": 1,
-        "created_at": "2022-01-31T10:32:28.622Z",
-        "update": "2022-01-31T10:32:28.622Z",
+        "created_at": "2022-02-03T06:57:00.871Z",
+        "update": "2022-02-03T06:57:00.871Z",
+        "project": 1,
         "type": [
-            3
+            1,
+            2
         ]
+    }
+},
+{
+    "model": "To_Do_list.task",
+    "pk": 3,
+    "fields": {
+        "summary": "Number two initial",
+        "description": "qwertyu",
+        "status": 1,
+        "created_at": "2022-02-03T07:30:25.911Z",
+        "update": "2022-02-03T07:30:25.911Z",
+        "project": 1,
+        "type": []
+    }
+},
+{
+    "model": "To_Do_list.task",
+    "pk": 4,
+    "fields": {
+        "summary": "Also done",
+        "description": "qwertyu",
+        "status": 1,
+        "created_at": "2022-02-03T07:30:44.582Z",
+        "update": "2022-02-03T07:30:44.582Z",
+        "project": 1,
+        "type": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "To_Do_list.task",
+    "pk": 5,
+    "fields": {
+        "summary": "Also done",
+        "description": "",
+        "status": 2,
+        "created_at": "2022-02-03T07:34:36.600Z",
+        "update": "2022-02-03T07:34:36.600Z",
+        "project": 3,
+        "type": []
     }
 },
 {
@@ -61,17 +105,36 @@
     "fields": {
         "date_begin": "2022-01-31",
         "date_end": "2022-02-05",
-        "title": "Initial",
-        "description": "All at here!",
-        "task": 1
+        "title": "test project",
+        "description": "test desc"
+    }
+},
+{
+    "model": "To_Do_list.project",
+    "pk": 2,
+    "fields": {
+        "date_begin": "2022-01-31",
+        "date_end": "2022-02-06",
+        "title": "qwertyu",
+        "description": "oiuytrew"
+    }
+},
+{
+    "model": "To_Do_list.project",
+    "pk": 3,
+    "fields": {
+        "date_begin": "2022-01-31",
+        "date_end": "2022-02-06",
+        "title": "qwertyu",
+        "description": "oiuytrew"
     }
 },
 {
     "model": "auth.user",
     "pk": 1,
     "fields": {
-        "password": "pbkdf2_sha256$320000$s9AONRYme9Czif9hK30HZs$x0ZnThh3whdphHNuAH9+pViOVoXv1hoF7U3U4cg1kLg=",
-        "last_login": "2022-01-31T10:30:55.380Z",
+        "password": "pbkdf2_sha256$320000$jvm0orzUVlKc49N3gzpEoJ$rexqQKc4AKk2ONeE3Cf/EGip844na7TVjgU+6OOXi+k=",
+        "last_login": "2022-02-03T06:53:53.585Z",
         "is_superuser": true,
         "username": "admin",
         "first_name": "",
@@ -79,7 +142,7 @@
         "email": "",
         "is_staff": true,
         "is_active": true,
-        "date_joined": "2022-01-31T10:30:51.029Z",
+        "date_joined": "2022-02-03T06:53:34.088Z",
         "groups": [],
         "user_permissions": []
     }
