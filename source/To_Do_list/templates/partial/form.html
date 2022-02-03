@@ -1,9 +1,7 @@
 {% csrf_token %}
 
 {% for field in form %}
-    <div class="gap-2 col-6" style="float: left">
     <p><label for="{{ field.id_for_label }}">{{ field.label }}</label></p>
-    </div>
     {% for error in field.errors %}
         <p class="text-danger">{{ error }}</p>
     {% endfor %}
