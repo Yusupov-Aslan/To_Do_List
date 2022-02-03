@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils.http import urlencode
 from django.views import View
-from django.views.generic import TemplateView, FormView, ListView, CreateView
+from django.views.generic import TemplateView, FormView, ListView, CreateView, DetailView, UpdateView, DeleteView
 from To_Do_list.forms import TaskForm, SearchForm
 from To_Do_list.models import Task
 
@@ -57,51 +57,26 @@ class TasksView(ListView):
         return None
 
 
-class One_Task_View(TemplateView):
+class One_Task_View(DetailView):
     template_name = 'tasks/one_task.html'
-
-    def get_context_data(self, **kwargs):
-        task = get_object_or_404(Task, pk=kwargs.get("pk"))
-        kwargs['task'] = task
-        return super().get_context_data(**kwargs)
+    model = Task
 
 
-class UpdateView(FormView):
+class TaskUpdateView(UpdateView):
+    model = Task
     template_name = 'tasks/update.html'
     form_class = TaskForm
 
-    def dispatch(self, request, *args, **kwargs):
-        self.task = self.get_object()
-        return super(UpdateView, self).dispatch(request, *args, **kwargs)
+    def get_success_url(self):
+        return reverse("one_task_view", kwargs={"pk": self.object.pk})
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['instance'] = self.task
-        return kwargs
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['task'] = self.task
-        return context
-
-    def form_valid(self, form):
-        self.task = form.save()
-        return super().form_valid(form)
+class TaskDeleteView(DeleteView):
+    model = Task
+    template_name = 'tasks/delete.html'
 
     def get_success_url(self):
-        return reverse('one_task_view', kwargs={'pk': self.task.pk})
+        task = get_object_or_404(Task, id=self.kwargs.get('pk'))
+        project_id = task.project_id
+        return reverse("project_view", kwargs={'pk': project_id})
 
-    def get_object(self):
-        return get_object_or_404(Task, pk=self.kwargs.get('pk'))
-
-
-class DeleteView(View):
-
-    def get(self, request, **kwargs):
-        task = get_object_or_404(Task, pk=kwargs.get("pk"))
-        return render(request, 'tasks/delete.html', {"task": task})
-
-    def post(self, request, **kwargs):
-        task = get_object_or_404(Task, pk=kwargs.get("pk"))
-        task.delete()
-        return redirect('view_tasks_view')

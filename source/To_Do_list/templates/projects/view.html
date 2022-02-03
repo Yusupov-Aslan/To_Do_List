@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Список проектов{% endblock %}
-{% block nav %} {% endblock %}
+{% block nav %}
+    <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url "create_project_view" %}">Создание проекта</a>
+    </li>{% endblock %}
 {% block content %}
 <h1>Список проектов!!</h1>
     {% for project in projects %}

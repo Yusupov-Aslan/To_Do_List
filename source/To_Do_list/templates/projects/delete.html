@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Удаление задачи{% endblock %}
+{% block nav %} {% endblock %}
+{% block content %}
+        <div>
+        <form action="{% url 'project_delete_view' project.pk %}" method="POST">
+        {% csrf_token %}
+            <div class="card text-center" style="max-width: 25rem;">
+              <div class="card-header">
+                  </div>
+              <div class="card-body">
+                <h5 class="card-title">Удаление задачи!</h5>
+                <p class="card-text">Вы действительно хотите удалить задачу!!! <br> {{ project.title }}</p>
+                <div class="gap-2 col-6" style="float: right">
+                    <a><button class="btn btn-danger" type="submit">Да</button></a>
+                    <a href="{% url 'project_view' project.pk %}"><button class="btn btn-primary" type="button">Нет</button></a>
+                </div>
+              </div>
+              <div class="card-footer">
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

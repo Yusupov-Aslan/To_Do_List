@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Редактирование проекта{% endblock %}
+{% block nav %}
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="{% url "project_view" project.pk %}">Вернуться к проекту</a>
+    </li>
+{% endblock %}
+{% block content %}
+    <h1>Редактирование проекта</h1>
+
+    <form action="{% url "create_project_view" %}" method="post">
+       {% include 'partial/form.html' with button_text="Редактировать" %}
+    </form>
+
+{% endblock %}
