@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
@@ -15,7 +16,7 @@ class ProjectListView(ListView):
         return queryset.order_by('title')
 
 
-class ProjectCreateView(CreateView):
+class ProjectCreateView(LoginRequiredMixin, CreateView):
     model = Project
     form_class = ProjectForm
     template_name = 'projects/create.html'
@@ -29,7 +30,7 @@ class ProjectDetailView(DetailView):
     model = Project
 
 
-class ProjectTaskAdd(CreateView):
+class ProjectTaskAdd(LoginRequiredMixin, CreateView):
     model = Task
     form_class = TaskFormProject
     template_name = 'tasks/create.html'
@@ -43,7 +44,7 @@ class ProjectTaskAdd(CreateView):
         return redirect('To_Do_list:project_view', pk=project.pk)
 
 
-class ProjectUpdateView(UpdateView):
+class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     model = Project
     template_name = 'projects/update.html'
     form_class = ProjectForm
@@ -52,7 +53,7 @@ class ProjectUpdateView(UpdateView):
         return reverse("To_Do_list:project_view", kwargs={"pk": self.object.pk})
 
 
-class ProjectDeleteView(DeleteView):
+class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     model = Project
     template_name = 'projects/delete.html'
     success_url = reverse_lazy('To_Do_list:projects_view')
