@@ -19,16 +19,21 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 {% block nav %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:login' %}">Вход</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:add_task_view' %}">Создание
-                            задачи</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'To_Do_list:view_tasks_view' %}">Все Задачи</a>
-                    </li>
+                    {% if not user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:login' %}">Вход</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'To_Do_list:projects_view' %}">Все Проекты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'To_Do_list:view_tasks_view' %}">Все Задачи</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:logout' %}">Выход</a>
+                        </li>
+                    {% endif %}
                 {% endblock %}
             </ul>
         </div>

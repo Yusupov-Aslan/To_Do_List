@@ -1,42 +1,53 @@
 {% extends 'base.html' %}
 {% block nav %}
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:project_update_view' project.pk%}">Редактировать проект</a>
-    </li>
-    <li class="nav-item">
-       <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:project_delete_view' project.pk%}">Удалить проект</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:task_project_view' project.id %}">Создание задачи</a>
-    </li>
-
+    {% if not user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Вход</a>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:project_update_view' project.pk %}">Редактировать
+                проект</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:project_delete_view' project.pk %}">Удалить
+                проект</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:task_project_view' project.id %}">Создание
+                задачи</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:logout' %}">Выход</a>
+        </li>
+    {% endif %}
 {% endblock %}
 {% block content %}
-        <br>
+    <br>
     <div class="card border-info mb-3" style="max-width: 25rem;">
-      <div class="card-header bg-transparent border-info">Дата начала: {{ project.date_begin }}<br>Дата окончания:
-          {{ project.date_end }}  </div>
-      <div class="card-body ">
-        <h5 class="card-title">Название: {{ project.title }}</h5>
-        <p class="card-text">Описание: {{ project.description }}</p>
-      </div>
-      <div class="card-footer bg-transparent border-info">
-          <a href="{% url "To_Do_list:projects_view" %}" class="btn btn" style="float: right">Назад</a></div>
+        <div class="card-header bg-transparent border-info">Дата начала: {{ project.date_begin }}<br>Дата окончания:
+            {{ project.date_end }}  </div>
+        <div class="card-body ">
+            <h5 class="card-title">Название: {{ project.title }}</h5>
+            <p class="card-text">Описание: {{ project.description }}</p>
+        </div>
+        <div class="card-footer bg-transparent border-info">
+            <a href="{% url "To_Do_list:projects_view" %}" class="btn btn" style="float: right">Назад</a></div>
     </div>
     <h1>Список задач!</h1>
-           {% for task in project.tasks.all %}
-                          <br>
-                <div class="card" style="max-width: 400px;">
-                  <div class="card-header">
-                    Статус: {{ task.status }}
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title">Заголовок: {{ task.summary }}</h5>
-                    <a href="{% url "To_Do_list:one_task_view" task.pk %}" class="btn btn" style="float: right">
-                        Детальный просмотр...</a>
-                  </div>
-                </div>
-            {% endfor %}
+    {% for task in project.tasks.all %}
+        <br>
+        <div class="card" style="max-width: 400px;">
+            <div class="card-header">
+                Статус: {{ task.status }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Заголовок: {{ task.summary }}</h5>
+                <a href="{% url "To_Do_list:one_task_view" task.pk %}" class="btn btn" style="float: right">
+                    Детальный просмотр...</a>
+            </div>
+        </div>
+    {% endfor %}
 
 
 {% endblock %}

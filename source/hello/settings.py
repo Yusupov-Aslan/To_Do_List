@@ -117,6 +117,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGOUT_REDIRECT_URL = "To_Do_list:index"
+LOGIN_REDIRECT_URL = "To_Do_list:index"
+
 LOGIN_URL = 'accounts:login'
 
 # Static files (CSS, JavaScript, Images)

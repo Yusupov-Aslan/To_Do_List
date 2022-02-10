@@ -1,9 +1,20 @@
 {% extends 'base.html' %}
 {% block title %}Список проектов{% endblock %}
 {% block nav %}
-    <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url "To_Do_list:create_project_view" %}">Создание проекта</a>
-    </li>{% endblock %}
+       {% if not user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Вход</a>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "To_Do_list:create_project_view" %}">Создание проекта</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:logout' %}">Выход</a>
+        </li>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 <h1>Список проектов!!</h1>
     {% for project in projects %}
