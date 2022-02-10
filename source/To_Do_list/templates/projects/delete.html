@@ -13,7 +13,7 @@
                 <p class="card-text">Введите название проекта!!! {{ project.title }}</p>
                 <div class="gap-2 col-6" style="float: right">
                     {% include 'partial/form.html' with button_text="Удалить" %}
-                    <a href="{% url 'project_view' project.pk %}"><button class="btn btn-primary" type="button">Нет</button></a>
+                    <a href="{% url 'To_Do_list:project_view' project.pk %}"><button class="btn btn-primary" type="button">Нет</button></a>
                 </div>
               </div>
               <div class="card-footer">

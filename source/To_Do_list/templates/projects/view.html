@@ -2,7 +2,7 @@
 {% block title %}Список проектов{% endblock %}
 {% block nav %}
     <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url "create_project_view" %}">Создание проекта</a>
+          <a class="nav-link active" aria-current="page" href="{% url "To_Do_list:create_project_view" %}">Создание проекта</a>
     </li>{% endblock %}
 {% block content %}
 <h1>Список проектов!!</h1>
@@ -12,7 +12,7 @@
           <div class="card-header"> </div>
           <div class="card-body">
             <h5 class="card-title">Название: {{ project.title }}</h5>
-            <a href="{% url "project_view" project.pk %}" class="btn btn" style="float: right">
+            <a href="{% url "To_Do_list:project_view" project.pk %}" class="btn btn" style="float: right">
                 Детальный просмотр...</a>
           </div>
         </div>

@@ -2,13 +2,13 @@
 {% block title %}Редактирование задачи{% endblock %}
 {% block nav %}
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{% url "one_task_view" task.pk %}">Вернуться к задаче</a>
+      <a class="nav-link active" aria-current="page" href="{% url "To_Do_list:one_task_view" task.pk %}">Вернуться к задаче</a>
     </li>
 {% endblock %}
 {% block content %}
     <h1>Редактирование задачи</h1>
 
-    <form action="{% url "task_update_view" task.pk %}" method="post">
+    <form action="{% url "To_Do_list:task_update_view" task.pk %}" method="post">
        {% include 'partial/form.html' with button_text="Редактировать" %}
     </form>
 

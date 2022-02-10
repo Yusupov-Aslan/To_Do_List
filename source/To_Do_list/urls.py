@@ -12,6 +12,7 @@ from To_Do_list.views import (
     TaskUpdateView,
     TaskDeleteView, ProjectUpdateView, ProjectDeleteView,
 )
+app_name = 'To_Do_list'
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),

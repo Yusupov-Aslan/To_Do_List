@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     # Custom apps
     'To_Do_list'
+
+    # 'accounts'
 ]
 
 MIDDLEWARE = [

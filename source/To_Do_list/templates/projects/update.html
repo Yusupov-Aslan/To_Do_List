@@ -2,13 +2,13 @@
 {% block title %}Редактирование проекта{% endblock %}
 {% block nav %}
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{% url "project_view" project.pk %}">Вернуться к проекту</a>
+      <a class="nav-link active" aria-current="page" href="{% url "To_Do_list:project_view" project.pk %}">Вернуться к проекту</a>
     </li>
 {% endblock %}
 {% block content %}
     <h1>Редактирование проекта</h1>
 
-    <form action="{% url "project_update_view" project.id %}" method="post">
+    <form action="{% url "To_Do_list:project_update_view" project.id %}" method="post">
        {% include 'partial/form.html' with button_text="Редактировать" %}
     </form>
 

@@ -19,14 +19,14 @@ class AddView(CreateView):
     template_name = "tasks/create.html"
 
     def get_success_url(self):
-        return reverse("one_task_view", kwargs={"pk": self.object.pk})
+        return reverse("To_Do_list:one_task_view", kwargs={"pk": self.object.pk})
 
 
 class TasksView(ListView):
     model = Task
     context_object_name = 'tasks'
     template_name = 'tasks/view.html'
-    paginate_by = 10
+    paginate_by = 5
 
     def get(self, request, *args, **kwargs):
         self.form = self.get_search_form()
@@ -68,7 +68,7 @@ class TaskUpdateView(UpdateView):
     form_class = TaskForm
 
     def get_success_url(self):
-        return reverse("one_task_view", kwargs={"pk": self.object.pk})
+        return reverse("To_Do_list:one_task_view", kwargs={"pk": self.object.pk})
 
 
 class TaskDeleteView(DeleteView):
@@ -78,5 +78,5 @@ class TaskDeleteView(DeleteView):
     def get_success_url(self):
         task = get_object_or_404(Task, id=self.kwargs.get('pk'))
         project_id = task.project_id
-        return reverse("project_view", kwargs={'pk': project_id})
+        return reverse("To_Do_list:project_view", kwargs={'pk': project_id})
 
