@@ -39,9 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Custom apps
-    'To_Do_list'
-
-    # 'accounts'
+    'To_Do_list',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -118,6 +117,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL = 'accounts:login'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
