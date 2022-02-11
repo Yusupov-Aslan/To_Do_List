@@ -2,7 +2,11 @@
 {% block nav %}
     {% if not user.is_authenticated %}
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:login' %}">Вход</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:project_update_view' project.pk %}">Редактировать
+                проект</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">Вход</a>
         </li>
     {% else %}
         <li class="nav-item">
@@ -18,7 +22,7 @@
                 задачи</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:logout' %}">Выход</a>
+            <a class="nav-link" href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}">Выход</a>
         </li>
     {% endif %}
 {% endblock %}
@@ -26,7 +30,8 @@
     <br>
     <div class="card border-info mb-3" style="max-width: 25rem;">
         <div class="card-header bg-transparent border-info">Дата начала: {{ project.date_begin }}<br>Дата окончания:
-            {{ project.date_end }}  </div>
+            {{ project.date_end }}
+        </div>
         <div class="card-body ">
             <h5 class="card-title">Название: {{ project.title }}</h5>
             <p class="card-text">Описание: {{ project.description }}</p>

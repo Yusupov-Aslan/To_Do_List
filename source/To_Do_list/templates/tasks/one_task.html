@@ -3,7 +3,7 @@
 {% block nav %}
     {% if not user.is_authenticated %}
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:login' %}">Вход</a>
+            <a class="nav-link" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">Вход</a>
         </li>
     {% else %}
         <li class="nav-item">
@@ -17,7 +17,7 @@
                href="{% url 'To_Do_list:task_delete_view' task.pk %}">Удалить</a>
         </li>
         <li>
-            <a class="nav-link" href="{% url 'accounts:logout' %}">Выход</a>
+            <a class="nav-link" href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}">Выход</a>
         </li>
     {% endif %}
 {% endblock %}

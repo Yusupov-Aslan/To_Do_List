@@ -1,31 +1,34 @@
 {% extends 'base.html' %}
 {% block title %}Список проектов{% endblock %}
 {% block nav %}
-       {% if not user.is_authenticated %}
+    {% if not user.is_authenticated %}
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:login' %}">Вход</a>
+            <a class="nav-link" href="{% url "To_Do_list:create_project_view" %}">Создание проекта</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">Вход</a>
         </li>
     {% else %}
         <li class="nav-item">
             <a class="nav-link" href="{% url "To_Do_list:create_project_view" %}">Создание проекта</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:logout' %}">Выход</a>
+            <a class="nav-link" href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}">Выход</a>
         </li>
     {% endif %}
 {% endblock %}
 
 {% block content %}
-<h1>Список проектов!!</h1>
+    <h1>Список проектов!!</h1>
     {% for project in projects %}
         <br>
         <div class="card" style="max-width: 400px;">
-          <div class="card-header"> </div>
-          <div class="card-body">
-            <h5 class="card-title">Название: {{ project.title }}</h5>
-            <a href="{% url "To_Do_list:project_view" project.pk %}" class="btn btn" style="float: right">
-                Детальный просмотр...</a>
-          </div>
+            <div class="card-header"></div>
+            <div class="card-body">
+                <h5 class="card-title">Название: {{ project.title }}</h5>
+                <a href="{% url "To_Do_list:project_view" project.pk %}" class="btn btn" style="float: right">
+                    Детальный просмотр...</a>
+            </div>
         </div>
     {% endfor %}
 
