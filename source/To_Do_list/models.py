@@ -106,7 +106,10 @@ class ProjectUser(models.Model):
     project = models.ForeignKey('To_Do_list.Project', on_delete=models.CASCADE, related_name='projectusers',
                                 verbose_name='Проект')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userprojects', verbose_name='Пользователь')
-    role = models.CharField(max_length=255, choices=ROLE_CHOIСES, default=PROJECT_MANAGER)
+    role = models.CharField(max_length=255, choices=ROLE_CHOIСES, default=PROJECT_MANAGER, verbose_name='Должность')
+
+    class Meta:
+        unique_together = ('project', 'user')
 
     def __str__(self):
         return f"{self.user}. {self.project.title} - {self.role}"

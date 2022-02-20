@@ -1,9 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from To_Do_list.models import Project, Task
-from To_Do_list.forms import ProjectForm, TaskFormProject, ProjectDeleteForm
+from To_Do_list.forms import ProjectForm, TaskFormProject, ProjectDeleteForm, ParticipantAddForm
 
 
 class ProjectListView(ListView):
@@ -69,3 +70,36 @@ class ProjectDeleteView(LoginRequiredMixin, DeleteView):
         if self.request.method == "POST":
             kwargs['instance'] = self.object
         return kwargs
+
+
+class ProjectParticipantAdd(LoginRequiredMixin, CreateView):
+    model = Project
+    template_name = 'projects/participant_add.html'
+    form_class = ParticipantAddForm
+
+    def post(self, request, *args, **kwargs):
+        project = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            pru = form.save(commit=False)
+            pru.project = project
+            pru.save()
+            return redirect('To_Do_list:project_view', pk=project.pk)
+        else:
+            return self.form_invalid(form)
+
+    def get(self, request, *args, **kwargs):
+        form = ParticipantAddForm()
+        return render(request, self.template_name, {'form': form, 'project': self.get_object()})
+
+
+class ProjectParticipantDelete(LoginRequiredMixin, DeleteView):
+    model = Project
+    success_url = reverse_lazy('To_Do_list:project_view')
+
+    def post(self, request, *args, **kwargs):
+        project = self.get_object()
+        user_id = request.POST.get('user_id')
+        project.participants.remove(user_id)
+        return redirect('To_Do_list:project_view', pk=project.pk)
+

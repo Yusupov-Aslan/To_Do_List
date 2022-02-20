@@ -10,6 +10,10 @@
         </li>
     {% else %}
         <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:participant_add' project.pk %}">Добавить
+                Участника</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:project_update_view' project.pk %}">Редактировать
                 проект</a>
         </li>
@@ -43,18 +47,14 @@
     {% for p in project.projectusers.all %}
         <br>
         <div class="card" style="max-width: 400px;">
-            {% if p.user.first_name %}
-                <div class="card-header">
-                    <h5 class="card-title">Имя: {{ p.user.first_name }}</h5>
-                </div>
-            {% elif p.user.last_name %}
-                <div class="card-header">
-                    <h5 class="card-title">Фамилия: {{ p.user.last_name }}</h5>
-                </div>
-            {% endif %}
             <div class="card-body">
+                <h5 class="card-title">Имя: {% firstof p.user.first_name p.user.last_name p.user.username %}</h5>
                 <p class="card-text">Должность: {{ p.get_role_display }}</p>
-
+                <form action="{% url 'To_Do_list:participant_remove' project.pk%}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="user_id" value="{{ p.user.pk }}">
+                    <button type="submit" class="btn-danger">Удалить</button>
+                </form>
             </div>
         </div>
     {% endfor %}

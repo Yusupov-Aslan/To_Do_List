@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.forms import CheckboxSelectMultiple, Textarea
-from To_Do_list.models import Task, Project
+from To_Do_list.models import Task, Project, ProjectUser
 
 
 class TaskForm(forms.ModelForm):
@@ -37,3 +37,9 @@ class ProjectDeleteForm(forms.ModelForm):
         if self.instance.title != self.cleaned_data.get("title"):
             raise ValidationError("Название статьи не соответствует")
         return self.cleaned_data.get("title")
+
+
+class ParticipantAddForm(forms.ModelForm):
+    class Meta:
+        model = ProjectUser
+        fields = ("user", "role")
