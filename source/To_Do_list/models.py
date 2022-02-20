@@ -50,6 +50,7 @@ class Task(models.Model):
     project = models.ForeignKey('To_Do_list.Project', on_delete=models.CASCADE, related_name='tasks',
                                 verbose_name='Проект')
 
+
     def __str__(self):
         return f"{self.pk}. {self.summary}: {self.status} - {self.type}"
 
@@ -89,6 +90,8 @@ class Project(models.Model):
     title = models.CharField(max_length=20, verbose_name="Название", validators=(MinLengthValidator(5),))
     description = models.TextField(max_length=2000, null=True, blank=True,
                                    verbose_name="Описание", validators=(MaxLengthValidator(2000),))
+    participants = models.ManyToManyField(User, related_name='projects',
+                                          verbose_name='Проекты', through='ProjectUser')
 
     def __str__(self):
         return f"{self.pk}. {self.title}: {self.description}"
@@ -104,3 +107,6 @@ class ProjectUser(models.Model):
                                 verbose_name='Проект')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userprojects', verbose_name='Пользователь')
     role = models.CharField(max_length=255, choices=ROLE_CHOIСES, default=PROJECT_MANAGER)
+
+    def __str__(self):
+        return f"{self.user}. {self.project.title} - {self.role}"
