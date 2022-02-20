@@ -39,6 +39,25 @@
         <div class="card-footer bg-transparent border-info">
             <a href="{% url "To_Do_list:projects_view" %}" class="btn btn" style="float: right">Назад</a></div>
     </div>
+    <h1>Список участников!</h1>
+    {% for p in project.projectusers.all %}
+        <br>
+        <div class="card" style="max-width: 400px;">
+            {% if p.user.first_name %}
+                <div class="card-header">
+                    <h5 class="card-title">Имя: {{ p.user.first_name }}</h5>
+                </div>
+            {% elif p.user.last_name %}
+                <div class="card-header">
+                    <h5 class="card-title">Фамилия: {{ p.user.last_name }}</h5>
+                </div>
+            {% endif %}
+            <div class="card-body">
+                <p class="card-text">Должность: {{ p.get_role_display }}</p>
+
+            </div>
+        </div>
+    {% endfor %}
     <h1>Список задач!</h1>
     {% for task in project.tasks.all %}
         <br>
@@ -53,6 +72,8 @@
             </div>
         </div>
     {% endfor %}
+
+
 
 
 {% endblock %}
