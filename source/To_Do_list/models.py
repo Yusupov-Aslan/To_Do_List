@@ -1,7 +1,17 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.core.validators import BaseValidator
 
 from django.utils.deconstruct import deconstructible
+
+PROJECT_MANAGER = "project_manager"
+TEAM_LEAD = "team_lead"
+DEVELOPER = "developer"
+ROLE_CHOIСES = [
+    (PROJECT_MANAGER, "Менеджер проекта"),
+    (TEAM_LEAD, "Капитан"),
+    (DEVELOPER, "Разработчик")
+]
 
 
 @deconstructible
@@ -37,7 +47,7 @@ class Task(models.Model):
     type = models.ManyToManyField('To_Do_list.Type', related_name='tasks', verbose_name='Тип')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
     update = models.DateTimeField(auto_now=True, verbose_name="Время обновления")
-    project = models.ForeignKey('To_Do_list.Project', on_delete=models.CASCADE, default=1, related_name='tasks',
+    project = models.ForeignKey('To_Do_list.Project', on_delete=models.CASCADE, related_name='tasks',
                                 verbose_name='Проект')
 
     def __str__(self):
@@ -88,3 +98,9 @@ class Project(models.Model):
         verbose_name = 'Проект'
         verbose_name_plural = 'Проекты'
 
+
+class ProjectUser(models.Model):
+    project = models.ForeignKey('To_Do_list.Project', on_delete=models.CASCADE, related_name='projectusers',
+                                verbose_name='Проект')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userprojects', verbose_name='Пользователь')
+    role = models.CharField(max_length=255, choices=ROLE_CHOIСES, default=PROJECT_MANAGER)
