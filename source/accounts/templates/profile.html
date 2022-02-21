@@ -2,16 +2,17 @@
 
 {% block content %}
     <h1>Профиль пользователя {{ user_object.username }}</h1>
-    <p><strong>Почта: </strong>{{ user_object.email|default:"Не указана"}}</p>
+    <p><strong>Почта: </strong>{{ user_object.email|default:"Не указана" }}</p>
     <p><strong>Фамилия: </strong>{{ user_object.last_name|default:"Не указана" }}</p>
     <p><strong>Имя: </strong>{{ user_object.first_name|default:"Не указанo" }}</p>
     <p><strong>GIT репозиторий: </strong>{{ user_object.profile.git_url|default:"Не указана" }}</p>
     <p><strong>О себе: </strong>{{ user_object.profile.about_user|default:"Нет информации" }}</p>
 
     {% if user_object.profile.avatar %}
-        <img src="{{ user_object.profile.avatar.url }}" alt="user avatar">
+        <img style="width: 250px; height: auto;"
+             src="{{ user_object.profile.avatar.url }}" alt="user avatar">
     {% endif %}
 
-        {% include "partial/project_list.html" %}
+    {% include "partial/project_list.html" %}
 
 {% endblock content %}
