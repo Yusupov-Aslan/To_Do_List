@@ -30,6 +30,9 @@
                         </li>
                     {% else %}
                         <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:user-profile' user.pk%}">Профиль</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{% url 'To_Do_list:projects_view' %}">Все Проекты</a>
                         </li>
                         <li class="nav-item">
