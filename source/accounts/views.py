@@ -77,4 +77,5 @@ class UserList(PermissionRequiredMixin, ListView):
     model = get_user_model()
     context_object_name = 'users'
     template_name = "profile_list.html"
-    permission_required = "accounts:view_profile"
+    permission_required = "accounts.view_profile"
+
