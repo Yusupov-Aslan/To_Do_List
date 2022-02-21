@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
@@ -13,7 +14,8 @@ class IndexView(View):
         return render(request, 'tasks/index.html')
 
 
-class AddView(CreateView):
+class AddView(PermissionRequiredMixin, CreateView):
+    permission_required = "To_Do_list.add_task"
     model = Task
     form_class = TaskForm
     template_name = "tasks/create.html"
@@ -67,7 +69,8 @@ class One_Task_View(DetailView):
     model = Task
 
 
-class TaskUpdateView(UpdateView):
+class TaskUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = "To_Do_list.change_task"
     model = Task
     template_name = 'tasks/update.html'
     form_class = TaskForm
@@ -81,7 +84,8 @@ class TaskUpdateView(UpdateView):
         return reverse("To_Do_list:one_task_view", kwargs={"pk": self.object.pk})
 
 
-class TaskDeleteView(DeleteView):
+class TaskDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = "To_Do_list.delete_task"
     model = Task
     template_name = 'tasks/delete.html'
 

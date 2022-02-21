@@ -38,7 +38,8 @@ class ProjectDetailView(DetailView):
     model = Project
 
 
-class ProjectTaskAdd(LoginRequiredMixin, CreateView):
+class ProjectTaskAdd(PermissionRequiredMixin, CreateView):
+    permission_required = "To_Do_list.add_task"
     model = Task
     form_class = TaskFormProject
     template_name = 'tasks/create.html'
@@ -60,6 +61,9 @@ class ProjectUpdateView(PermissionRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse("To_Do_list:project_view", kwargs={"pk": self.object.pk})
+
+    def has_permission(self):
+        return super().has_permission() or self.request.user == self.get_object().participants
 
 
 class ProjectDeleteView(PermissionRequiredMixin, DeleteView):

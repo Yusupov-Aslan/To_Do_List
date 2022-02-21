@@ -15,7 +15,7 @@
                    href="{% url 'To_Do_list:participant_add' project.pk %}">Добавить Участника</a>
             </li>
         {% endif %}
-        {% if perms.To_Do_list.change_project %}
+        {% if perms.To_Do_list.change_project or user == project.participants%}
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page"
                    href="{% url 'To_Do_list:project_update_view' project.pk %}">Редактировать
@@ -29,10 +29,13 @@
                     проект</a>
             </li>
         {% endif %}
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:task_project_view' project.id %}">Создание
-                задачи</a>
-        </li>
+        {% if perms.To_Do_list.add_task %}
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"
+                   href="{% url 'To_Do_list:task_project_view' project.id %}">Создание
+                    задачи</a>
+            </li>
+        {% endif %}
         <li class="nav-item">
             <a class="nav-link" href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}">Выход</a>
         </li>

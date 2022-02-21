@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Permission
 
-from To_Do_list.models import Task, Status, Type, Project
+from To_Do_list.models import Task, Status, Type, Project, ProjectUser
 
 
 class TaskAdmin(admin.ModelAdmin):
@@ -18,3 +18,4 @@ admin.site.register(Status)
 admin.site.register(Type)
 admin.site.register(Project)
 admin.site.register(Permission)
+admin.site.register(ProjectUser)
