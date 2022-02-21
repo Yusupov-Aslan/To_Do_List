@@ -59,7 +59,7 @@
         <br>
         <div class="card" style="max-width: 400px;">
             <div class="card-body">
-                <h5 class="card-title">Имя: {% firstof p.user.first_name p.user.last_name p.user.username %}</h5>
+                <h5 class="card-title">Имя: <a href="{% url 'accounts:user-profile' user.pk%}">{% firstof p.user.first_name p.user.last_name p.user.username %}</a></h5>
                 <p class="card-text">Должность: {{ p.get_role_display }}</p>
                 {% if perms.To_Do_list.delete_projectuser %}
                     <form action="{% url 'To_Do_list:participant_remove' project.pk %}" method="post">
