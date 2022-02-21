@@ -1,20 +1,203 @@
 [
 {
-  "model": "auth.user",
-  "pk": 1,
-  "fields": {
-    "password": "pbkdf2_sha256$320000$jvm0orzUVlKc49N3gzpEoJ$rexqQKc4AKk2ONeE3Cf/EGip844na7TVjgU+6OOXi+k=",
-    "last_login": "2022-02-10T08:25:56.021Z",
-    "is_superuser": true,
-    "username": "admin",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2022-02-03T06:53:34.088Z",
-    "groups": [],
-    "user_permissions": []
-  }
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+        "name": "Project Manager",
+        "permissions": [
+            [
+                "add_project",
+                "To_Do_list",
+                "project"
+            ],
+            [
+                "change_project",
+                "To_Do_list",
+                "project"
+            ],
+            [
+                "delete_project",
+                "To_Do_list",
+                "project"
+            ],
+            [
+                "view_project",
+                "To_Do_list",
+                "project"
+            ],
+            [
+                "add_projectuser",
+                "To_Do_list",
+                "projectuser"
+            ],
+            [
+                "delete_projectuser",
+                "To_Do_list",
+                "projectuser"
+            ],
+            [
+                "add_task",
+                "To_Do_list",
+                "task"
+            ],
+            [
+                "change_task",
+                "To_Do_list",
+                "task"
+            ],
+            [
+                "delete_task",
+                "To_Do_list",
+                "task"
+            ],
+            [
+                "view_task",
+                "To_Do_list",
+                "task"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+        "name": "Team Lead",
+        "permissions": [
+            [
+                "add_projectuser",
+                "To_Do_list",
+                "projectuser"
+            ],
+            [
+                "delete_projectuser",
+                "To_Do_list",
+                "projectuser"
+            ],
+            [
+                "add_task",
+                "To_Do_list",
+                "task"
+            ],
+            [
+                "change_task",
+                "To_Do_list",
+                "task"
+            ],
+            [
+                "delete_task",
+                "To_Do_list",
+                "task"
+            ],
+            [
+                "view_task",
+                "To_Do_list",
+                "task"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 3,
+    "fields": {
+        "name": "Developer",
+        "permissions": [
+            [
+                "add_task",
+                "To_Do_list",
+                "task"
+            ],
+            [
+                "change_task",
+                "To_Do_list",
+                "task"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$xM8k7cmtSZAPlJsusDWd1A$jaPaoNQ7Xtw57b+q02tdd8pq+KGlj246qa5PEfMllLY=",
+        "last_login": "2022-02-21T08:23:42.102Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-02-14T09:02:16.375Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 13,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$LyvvfrWEJWSHAMseXejnYB$T88KjGgamRFCCtcM3+imLIokjQhJyG1v6kTi4CX4bT0=",
+        "last_login": "2022-02-21T08:42:24.578Z",
+        "is_superuser": false,
+        "username": "manager",
+        "first_name": "Менеджер",
+        "last_name": "",
+        "email": "meneger@mail.ru",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-02-21T07:20:43Z",
+        "groups": [
+            [
+                "Project Manager"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 14,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$2g4bnMHBeM9ufHObdMdH84$ROUxMXpdaf3YBuhkTrOgopceJvQKPYNAVdTsxDuRcu8=",
+        "last_login": "2022-02-21T08:41:03.591Z",
+        "is_superuser": false,
+        "username": "lead",
+        "first_name": "Капитан",
+        "last_name": "",
+        "email": "lead@mail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-02-21T07:23:40Z",
+        "groups": [
+            [
+                "Team Lead"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 15,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$Ur8IWpfxzqDrQMYYMdJ1d9$w9Cq7HJOlcAW1MUZUjtKfOQgCDFMzAQ76vnwNogZKgo=",
+        "last_login": "2022-02-21T07:38:49.096Z",
+        "is_superuser": false,
+        "username": "dev",
+        "first_name": "Разработчик",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-02-21T07:26:02Z",
+        "groups": [
+            [
+                "Developer"
+            ]
+        ],
+        "user_permissions": []
+    }
 }
 ]

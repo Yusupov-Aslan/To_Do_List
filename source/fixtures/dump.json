@@ -123,6 +123,22 @@
     }
 },
 {
+    "model": "To_Do_list.task",
+    "pk": 25,
+    "fields": {
+        "summary": "Initial",
+        "description": "qwertyuio",
+        "status": 1,
+        "created_at": "2022-02-21T07:37:55.906Z",
+        "update": "2022-02-21T07:38:21.275Z",
+        "project": 17,
+        "type": [
+            1,
+            2
+        ]
+    }
+},
+{
     "model": "To_Do_list.type",
     "pk": 1,
     "fields": {
@@ -196,16 +212,6 @@
 },
 {
     "model": "To_Do_list.project",
-    "pk": 9,
-    "fields": {
-        "date_begin": "2022-02-03",
-        "date_end": "2022-02-18",
-        "title": "Aqqqqqqqqqqqqqqq",
-        "description": "Alibabaфы"
-    }
-},
-{
-    "model": "To_Do_list.project",
     "pk": 10,
     "fields": {
         "date_begin": "2022-01-31",
@@ -225,21 +231,97 @@
     }
 },
 {
-    "model": "auth.user",
-    "pk": 1,
+    "model": "To_Do_list.project",
+    "pk": 12,
     "fields": {
-        "password": "pbkdf2_sha256$320000$jvm0orzUVlKc49N3gzpEoJ$rexqQKc4AKk2ONeE3Cf/EGip844na7TVjgU+6OOXi+k=",
-        "last_login": "2022-02-10T08:25:56.021Z",
-        "is_superuser": true,
-        "username": "admin",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": true,
-        "is_active": true,
-        "date_joined": "2022-02-03T06:53:34.088Z",
-        "groups": [],
-        "user_permissions": []
+        "date_begin": "2022-01-31",
+        "date_end": "2022-02-06",
+        "title": "Qwerty",
+        "description": "Qwertyui"
+    }
+},
+{
+    "model": "To_Do_list.project",
+    "pk": 17,
+    "fields": {
+        "date_begin": "2022-02-03",
+        "date_end": "2022-02-05",
+        "title": "AABBCC",
+        "description": "qwertyuiop"
+    }
+},
+{
+    "model": "To_Do_list.project",
+    "pk": 18,
+    "fields": {
+        "date_begin": "2022-02-03",
+        "date_end": "2022-02-06",
+        "title": "AASSDD",
+        "description": ""
+    }
+},
+{
+    "model": "To_Do_list.project",
+    "pk": 19,
+    "fields": {
+        "date_begin": "2022-01-31",
+        "date_end": "2022-02-18",
+        "title": "AAWWEE",
+        "description": ""
+    }
+},
+{
+    "model": "To_Do_list.projectuser",
+    "pk": 19,
+    "fields": {
+        "project": 7,
+        "user": 13,
+        "role": "project_manager"
+    }
+},
+{
+    "model": "To_Do_list.projectuser",
+    "pk": 20,
+    "fields": {
+        "project": 17,
+        "user": 13,
+        "role": "project_manager"
+    }
+},
+{
+    "model": "To_Do_list.projectuser",
+    "pk": 22,
+    "fields": {
+        "project": 17,
+        "user": 14,
+        "role": "team_lead"
+    }
+},
+{
+    "model": "To_Do_list.projectuser",
+    "pk": 23,
+    "fields": {
+        "project": 17,
+        "user": 15,
+        "role": "developer"
+    }
+},
+{
+    "model": "To_Do_list.projectuser",
+    "pk": 24,
+    "fields": {
+        "project": 18,
+        "user": 13,
+        "role": "project_manager"
+    }
+},
+{
+    "model": "To_Do_list.projectuser",
+    "pk": 25,
+    "fields": {
+        "project": 19,
+        "user": 1,
+        "role": "project_manager"
     }
 }
 ]

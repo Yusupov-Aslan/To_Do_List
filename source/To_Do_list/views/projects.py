@@ -63,7 +63,13 @@ class ProjectUpdateView(PermissionRequiredMixin, UpdateView):
         return reverse("To_Do_list:project_view", kwargs={"pk": self.object.pk})
 
     def has_permission(self):
-        return super().has_permission() or self.request.user == self.get_object().participants
+        project = self.get_object()
+        user_id = self.request.POST.get('user_id')
+        if ProjectUser.objects.filter(user=self.request.user, project=project).exists():
+            participant = ProjectUser.objects.get(user=self.request.user, project=project)
+            return super().has_permission() and user_id != self.request.user.id and participant.role
+        else:
+            return False
 
 
 class ProjectDeleteView(PermissionRequiredMixin, DeleteView):
@@ -101,6 +107,15 @@ class ProjectParticipantAdd(PermissionRequiredMixin, CreateView):
         project = self.get_object()
         form = ParticipantAddForm(project_id=project.id)
         return render(request, self.template_name, {'form': form, 'project': project})
+
+    def has_permission(self):
+        project = self.get_object()
+        user_id = self.request.POST.get('user_id')
+        if ProjectUser.objects.filter(user=self.request.user, project=project).exists():
+            participant = ProjectUser.objects.get(user=self.request.user, project=project)
+            return super().has_permission() and user_id != self.request.user.id and participant.role
+        else:
+            return False
 
 
 class ProjectParticipantDelete(PermissionRequiredMixin, DeleteView):
