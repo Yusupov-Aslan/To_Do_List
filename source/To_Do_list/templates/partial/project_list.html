@@ -1,0 +1,16 @@
+{% if is_paginated %}
+    {% include 'partial/pagination.html' %}
+{% endif %}
+
+<h2>Проекты</h2>
+
+{% for project in projects %}
+
+    <p><a href="{% url "To_Do_list:project_view" project.pk %}">{{ project.title }}</a></p>
+
+
+{% endfor %}
+
+{% if is_paginated %}
+    {% include 'partial/pagination.html' %}
+{% endif %}
