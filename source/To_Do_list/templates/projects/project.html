@@ -9,18 +9,26 @@
             <a class="nav-link" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">Вход</a>
         </li>
     {% else %}
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:participant_add' project.pk %}">Добавить
-                Участника</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:project_update_view' project.pk %}">Редактировать
-                проект</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:project_delete_view' project.pk %}">Удалить
-                проект</a>
-        </li>
+        {% if perms.To_Do_list.add_projectuser %}
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"
+                   href="{% url 'To_Do_list:participant_add' project.pk %}">Добавить Участника</a>
+            </li>
+        {% endif %}
+        {% if perms.To_Do_list.change_project %}
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"
+                   href="{% url 'To_Do_list:project_update_view' project.pk %}">Редактировать
+                    проект</a>
+            </li>
+        {% endif %}
+        {% if perms.To_Do_list.delete_project %}
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"
+                   href="{% url 'To_Do_list:project_delete_view' project.pk %}">Удалить
+                    проект</a>
+            </li>
+        {% endif %}
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'To_Do_list:task_project_view' project.id %}">Создание
                 задачи</a>
@@ -50,11 +58,13 @@
             <div class="card-body">
                 <h5 class="card-title">Имя: {% firstof p.user.first_name p.user.last_name p.user.username %}</h5>
                 <p class="card-text">Должность: {{ p.get_role_display }}</p>
-                <form action="{% url 'To_Do_list:participant_remove' project.pk%}" method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="user_id" value="{{ p.user.pk }}">
-                    <button type="submit" class="btn-danger">Удалить</button>
-                </form>
+                {% if perms.To_Do_list.delete_projectuser %}
+                    <form action="{% url 'To_Do_list:participant_remove' project.pk %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="user_id" value="{{ p.user.pk }}">
+                        <button type="submit" class="btn-danger">Удалить</button>
+                    </form>
+                {% endif %}
             </div>
         </div>
     {% endfor %}

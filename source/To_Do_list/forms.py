@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.forms import CheckboxSelectMultiple, Textarea
 from To_Do_list.models import Task, Project, ProjectUser
@@ -43,3 +44,10 @@ class ParticipantAddForm(forms.ModelForm):
     class Meta:
         model = ProjectUser
         fields = ("user", "role")
+
+    def __init__(self, *args, **kwargs):
+        project_id = kwargs.pop('project_id', None)
+        super().__init__(*args, **kwargs)
+        participants = ProjectUser.objects.filter(project_id=project_id).values_list('user_id', flat=True)
+        if project_id:
+            self.fields['user'].queryset = User.objects.exclude(id__in=participants)

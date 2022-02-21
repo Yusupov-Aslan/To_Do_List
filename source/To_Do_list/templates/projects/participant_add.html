@@ -2,7 +2,7 @@
 {% block title %}Новый участник проекта{% endblock %}
 {% block nav %} {% endblock %}
 {% block content %}
-    <h1>Создание нового участника!</h1>
+    <h1>Добавить нового участника!</h1>
     <form action="{% url "To_Do_list:participant_add" project.pk%}" method="post">
     {% include 'partial/form.html' with button_text="Создать" %}
     </form>

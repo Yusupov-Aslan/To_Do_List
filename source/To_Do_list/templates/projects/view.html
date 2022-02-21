@@ -9,9 +9,11 @@
             <a class="nav-link" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">Вход</a>
         </li>
     {% else %}
-        <li class="nav-item">
-            <a class="nav-link" href="{% url "To_Do_list:create_project_view" %}">Создание проекта</a>
-        </li>
+        {% if perms.To_Do_list.add_project %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "To_Do_list:create_project_view" %}">Создание проекта</a>
+            </li>
+        {% endif %}
         <li class="nav-item">
             <a class="nav-link" href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}">Выход</a>
         </li>
