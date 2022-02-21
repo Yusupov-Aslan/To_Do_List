@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<<<<<<< HEAD
     {% for user in users %}
 
         <p><a href="{% url 'accounts:user-profile' user.pk %}">{{ user.username }}</a></p>
@@ -9,5 +10,15 @@
         <hr>
 
     {% endfor %}
+=======
+{% for user in users %}
+
+            <p><a href="{% url 'accounts:user-profile' user.pk%}">{{ user.username }}</a></p>
+
+        <p>{{ user.first_name }}</p>
+        <p>{{ user.last_name }}</p>
+
+{% endfor %}
+>>>>>>> 075f7f4c26dd4aff4a44f098ecbc84fd051d0f4d
 
 {% endblock %}
