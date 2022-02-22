@@ -26,6 +26,26 @@
                 "project"
             ],
             [
+                "add_projectuser",
+                "To_Do_list",
+                "projectuser"
+            ],
+            [
+                "change_projectuser",
+                "To_Do_list",
+                "projectuser"
+            ],
+            [
+                "delete_projectuser",
+                "To_Do_list",
+                "projectuser"
+            ],
+            [
+                "view_projectuser",
+                "To_Do_list",
+                "projectuser"
+            ],
+            [
                 "add_task",
                 "To_Do_list",
                 "task"
@@ -65,7 +85,17 @@
                 "projectuser"
             ],
             [
+                "change_projectuser",
+                "To_Do_list",
+                "projectuser"
+            ],
+            [
                 "delete_projectuser",
+                "To_Do_list",
+                "projectuser"
+            ],
+            [
+                "view_projectuser",
                 "To_Do_list",
                 "projectuser"
             ],
@@ -136,7 +166,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$320000$xM8k7cmtSZAPlJsusDWd1A$jaPaoNQ7Xtw57b+q02tdd8pq+KGlj246qa5PEfMllLY=",
-        "last_login": "2022-02-21T15:16:41.564Z",
+        "last_login": "2022-02-22T04:43:01.844Z",
         "is_superuser": true,
         "username": "admin",
         "first_name": "",
@@ -154,7 +184,7 @@
     "pk": 13,
     "fields": {
         "password": "pbkdf2_sha256$320000$LyvvfrWEJWSHAMseXejnYB$T88KjGgamRFCCtcM3+imLIokjQhJyG1v6kTi4CX4bT0=",
-        "last_login": "2022-02-21T15:24:55.563Z",
+        "last_login": "2022-02-22T04:42:51.074Z",
         "is_superuser": false,
         "username": "manager",
         "first_name": "Менеджер",
