@@ -30,7 +30,7 @@
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:user-profile' user.pk %}">Личный кабинет</a>
+                            <a class="nav-link" href="{% url 'accounts:user_profile' user.pk %}">Личный кабинет</a>
                         </li>
                         {% if perms.accounts.view_profile %}
                             <li class="nav-item">
