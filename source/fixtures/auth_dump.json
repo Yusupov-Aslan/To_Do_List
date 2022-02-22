@@ -26,16 +26,6 @@
                 "project"
             ],
             [
-                "add_projectuser",
-                "To_Do_list",
-                "projectuser"
-            ],
-            [
-                "delete_projectuser",
-                "To_Do_list",
-                "projectuser"
-            ],
-            [
                 "add_task",
                 "To_Do_list",
                 "task"
@@ -54,6 +44,11 @@
                 "view_task",
                 "To_Do_list",
                 "task"
+            ],
+            [
+                "view_profile",
+                "accounts",
+                "profile"
             ]
         ]
     }
@@ -93,6 +88,26 @@
                 "view_task",
                 "To_Do_list",
                 "task"
+            ],
+            [
+                "add_profile",
+                "accounts",
+                "profile"
+            ],
+            [
+                "change_profile",
+                "accounts",
+                "profile"
+            ],
+            [
+                "delete_profile",
+                "accounts",
+                "profile"
+            ],
+            [
+                "view_profile",
+                "accounts",
+                "profile"
             ]
         ]
     }
@@ -121,7 +136,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$320000$xM8k7cmtSZAPlJsusDWd1A$jaPaoNQ7Xtw57b+q02tdd8pq+KGlj246qa5PEfMllLY=",
-        "last_login": "2022-02-21T08:23:42.102Z",
+        "last_login": "2022-02-21T15:16:41.564Z",
         "is_superuser": true,
         "username": "admin",
         "first_name": "",
@@ -139,7 +154,7 @@
     "pk": 13,
     "fields": {
         "password": "pbkdf2_sha256$320000$LyvvfrWEJWSHAMseXejnYB$T88KjGgamRFCCtcM3+imLIokjQhJyG1v6kTi4CX4bT0=",
-        "last_login": "2022-02-21T08:42:24.578Z",
+        "last_login": "2022-02-21T15:24:55.563Z",
         "is_superuser": false,
         "username": "manager",
         "first_name": "Менеджер",
@@ -161,7 +176,7 @@
     "pk": 14,
     "fields": {
         "password": "pbkdf2_sha256$320000$2g4bnMHBeM9ufHObdMdH84$ROUxMXpdaf3YBuhkTrOgopceJvQKPYNAVdTsxDuRcu8=",
-        "last_login": "2022-02-21T08:41:03.591Z",
+        "last_login": "2022-02-21T15:24:34.948Z",
         "is_superuser": false,
         "username": "lead",
         "first_name": "Капитан",
@@ -183,7 +198,7 @@
     "pk": 15,
     "fields": {
         "password": "pbkdf2_sha256$320000$Ur8IWpfxzqDrQMYYMdJ1d9$w9Cq7HJOlcAW1MUZUjtKfOQgCDFMzAQ76vnwNogZKgo=",
-        "last_login": "2022-02-21T07:38:49.096Z",
+        "last_login": "2022-02-21T15:24:46.677Z",
         "is_superuser": false,
         "username": "dev",
         "first_name": "Разработчик",
