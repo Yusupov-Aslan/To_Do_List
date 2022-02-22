@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.views.generic import CreateView, DetailView, ListView
 
 from accounts.forms import MyUserCreationForm
+from accounts.models import Profile
 
 
 class RegisterView(CreateView):
@@ -16,6 +17,7 @@ class RegisterView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
+        Profile.objects.create(user=user)
         login(self.request, user)
         return redirect(self.get_success_url())
 
