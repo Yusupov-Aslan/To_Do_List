@@ -4,7 +4,7 @@
 
 {% for user in users %}
 
-    <p><a href="{% url 'accounts:user-profile' user.pk %}">{{ user.username }}</a></p>
+    <p><a href="{% url 'accounts:user_profile' user.pk %}">{{ user.username }}</a></p>
     <p>{{ user.first_name }}</p>
     <p>{{ user.last_name }}</p>
     <hr>
