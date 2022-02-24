@@ -184,7 +184,7 @@
     "pk": 13,
     "fields": {
         "password": "pbkdf2_sha256$320000$LyvvfrWEJWSHAMseXejnYB$T88KjGgamRFCCtcM3+imLIokjQhJyG1v6kTi4CX4bT0=",
-        "last_login": "2022-02-22T04:42:51.074Z",
+        "last_login": "2022-02-24T07:04:29.717Z",
         "is_superuser": false,
         "username": "manager",
         "first_name": "Менеджер",
@@ -205,8 +205,8 @@
     "model": "auth.user",
     "pk": 14,
     "fields": {
-        "password": "pbkdf2_sha256$320000$2g4bnMHBeM9ufHObdMdH84$ROUxMXpdaf3YBuhkTrOgopceJvQKPYNAVdTsxDuRcu8=",
-        "last_login": "2022-02-21T15:24:34.948Z",
+        "password": "pbkdf2_sha256$320000$YpNeNbdr43Z4oO2zXFrBzu$MZcPexHE23I/sIeVZCEpFYQMk4jTxRanI72VJCDMOvQ=",
+        "last_login": "2022-02-24T05:32:13.681Z",
         "is_superuser": false,
         "username": "lead",
         "first_name": "Капитан",
