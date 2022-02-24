@@ -1,4 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
+from django import forms
+
+from accounts.models import Profile
 
 
 class MyUserCreationForm(UserCreationForm):
@@ -16,3 +20,14 @@ class MyUserCreationForm(UserCreationForm):
             self.add_error('first_name', 'Одно из полей Имени или Фамилии должно быть заполнено')
             return False
         return True
+
+
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        fields = ("email", "first_name", "last_name")
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ("avatar", "git_url", "about_user")
