@@ -4,7 +4,8 @@ from django.urls import path
 from accounts.views import (RegisterView,
                             UserProfileView,
                             UserList,
-                            UpdateUserView)
+                            UpdateUserView,
+                            UserPasswordChangeView)
 
 app_name = 'accounts'
 
@@ -15,4 +16,5 @@ urlpatterns = [
     path('registration/', RegisterView.as_view(), name="registration"),
     path("profile/list", UserList.as_view(), name="profile_list"),
     path("<int:pk>/update/", UpdateUserView.as_view(), name="update_user"),
+    path("change_password/", UserPasswordChangeView.as_view(), name="change_password")
 ]

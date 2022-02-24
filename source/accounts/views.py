@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth import authenticate, login, logout, get_user_model, update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
-from accounts.forms import MyUserCreationForm, UserUpdateForm, ProfileUpdateForm
+from accounts.forms import MyUserCreationForm, UserUpdateForm, ProfileUpdateForm, PasswordChangeForm
 from accounts.models import Profile
 
 
@@ -125,3 +125,21 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
         if 'profile_form' not in kwargs:
             kwargs['profile_form'] = self.get_profile_form()
         return super().get_context_data(**kwargs)
+
+
+class UserPasswordChangeView(LoginRequiredMixin, UpdateView):
+    model = get_user_model()
+    template_name = 'user_password_change.html'
+    form_class = PasswordChangeForm
+    context_object_name = 'user_object'
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        update_session_auth_hash(self.request, self.object)
+        return response
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def get_success_url(self):
+        return reverse("accounts:user_profile", kwargs={"pk": self.request.user.pk})
