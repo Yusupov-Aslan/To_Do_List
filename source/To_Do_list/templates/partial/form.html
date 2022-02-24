@@ -1,4 +1,6 @@
-{% csrf_token %}
+{% if not fields_only %}
+    {% csrf_token %}
+{% endif %}
 
 {% for field in form %}
     <p><label for="{{ field.id_for_label }}">{{ field.label }}</label></p>
@@ -9,5 +11,6 @@
 {% endfor %}
 
 <br>
-
-<input type="submit" class="btn btn-danger" value={{ button_text }} />
+{% if not fields_only %}
+    <input type="submit" class="btn btn-danger" value={{ button_text|default:"Сохранить" }} >
+{% endif %}

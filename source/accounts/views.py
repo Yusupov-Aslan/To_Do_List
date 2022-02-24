@@ -90,7 +90,7 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
     context_object_name = "user_object"
 
     def get_success_url(self):
-        return reverse("accounts:user-profile", kwargs={"pk": self.kwargs.get("pk")})
+        return reverse("accounts:user_profile", kwargs={"pk": self.kwargs.get("pk")})
 
     def get_object(self, queryset=None):
         return self.request.user
